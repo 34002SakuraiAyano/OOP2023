@@ -15,12 +15,16 @@ namespace WindowsFormsApp1 {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-         //  tbNum1.Text = "うぇ";
-          int ans = int.Parse(tbNum1.Text) + int.Parse(tbNum2.Text);
-          tbAns.Text = ans.ToString();
+            //  tbNum1.Text = "うぇ";
+            // int ans = int.Parse(tbNum1.Text) + int.Parse(tbNum2.Text);
+            //tbAns.Text = ans.ToString();
+            int num1 = int.Parse(tbNum1.Text); 
+            int num2 = int.Parse(tbNum2.Text);
+            int sum = num1 + num2;
+            tbAns.Text = sum.ToString();
         }
-        
-             
+
+
         private void Form1_Load(object sender, EventArgs e) {
 
         }
@@ -34,7 +38,6 @@ namespace WindowsFormsApp1 {
         }
 
         private void tbNum1_TextChanged(object sender, EventArgs e) {
-
         }
     }
 }

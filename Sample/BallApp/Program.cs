@@ -31,7 +31,7 @@ namespace BallApp {
         //マウスクリック時のイベントハンドラ
         private void Program_MouseClick(object sender, MouseEventArgs e) {
             //ボールインスタンス生成
-            soccerBall = new SoccerBall();
+            soccerBall = new SoccerBall(e.X,e.Y);
             pb = new PictureBox();
             pb.Image = soccerBall.Image;
             pb.Location = new Point((int)soccerBall.PosX, (int)soccerBall.PosY); //画像の位置

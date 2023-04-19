@@ -25,7 +25,6 @@ namespace WindowsFormsApp1 {
         //イベントハンドラ
         private void btPow_Click(object sender, EventArgs e) {
 
-
             //1行で書く場合
            // result.Text = (Math.Pow((double)Num3.Value, (double)Num4.Value)).ToString();
             //

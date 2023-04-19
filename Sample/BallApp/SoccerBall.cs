@@ -24,7 +24,7 @@ namespace BallApp {
 
             // double num = ran.Next(0, 500);
             // moveX = ran.Next(1, 50); 　　//乱数で移動量を設定
-            //  moveY = ran.Next(1, 50) ;　　//乱数で移動量を設定
+            // moveY = ran.Next(1, 50) ;　　//乱数で移動量を設定
 
             int rndX = ran.Next(-25, -15);
             moveX = (rndX != 0 ? rndX : 1); //乱数で移動量を設定

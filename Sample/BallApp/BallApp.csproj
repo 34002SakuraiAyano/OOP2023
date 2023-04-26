@@ -52,12 +52,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoccerBall.cs" />
     <Compile Include="TennisBall.cs" />
-    <Compile Include="Var.cs" />
+    <Compile Include="Bar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="pic\bar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="pic\soccer_ball.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

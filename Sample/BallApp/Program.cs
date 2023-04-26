@@ -10,13 +10,14 @@ namespace BallApp {
     class Program : Form {
 
         private Timer moveTimer;    //タイマー用
-        private SoccerBall soccerBall;
-        private TennisBall tennisBall;
         private PictureBox pb;
+
+
 
         //ObjにSoccerBallとTennisBallが入ってる
         private List<Obj> balls = new List<Obj>();    //ボールインスタンス格納用
         private List<PictureBox> pbs = new List<PictureBox>();      //表示用
+
 
         static void Main(string[] args) {
             Application.Run(new Program());
@@ -46,10 +47,13 @@ namespace BallApp {
             Obj ballobj = null;
             pb = new PictureBox();   //画像を表示するコントロール
 
+            //左クリックでサッカーボール出す
             if (e.Button == MouseButtons.Left){
                 ballobj= new SoccerBall(e.X - 25, e.Y - 25);
                 pb.Size = new Size(50, 50); //画像の表示サイズ
-            }else if(e.Button == MouseButtons.Right){
+
+            }
+            else if(e.Button == MouseButtons.Right){
                 ballobj = new TennisBall(e.X - 12, e.Y - 12);
                 pb.Size = new Size(30, 35); //画像の表示サイズ
             }
@@ -61,7 +65,7 @@ namespace BallApp {
 
             balls.Add(ballobj);
             pbs.Add(pb);
-            this.Text = "BallGame:" + balls.Count;
+            this.Text = "BallGame SoccerBall :" + SoccerBall.Count + "TennisBall :" + TennisBall.Count;
             moveTimer.Start();  //タイマースタート
 
         }

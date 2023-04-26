@@ -10,8 +10,10 @@ namespace BallApp {
 
         //フィールド
         Random random = new Random();   //乱数インスタンス
+       // private static int count;
+        public static int Count { get; set; }
 
-        //プロパティ
+        // public static int Count { get => count; set => count = value; }
 
         //コンストラクタ
         public SoccerBall(double xp, double yp)
@@ -22,6 +24,8 @@ namespace BallApp {
 
             int rndY = random.Next(-25, 25);
             MoveY = (rndY != 0 ? rndY : 1); //乱数で移動量を設定
+            Count++;
+
 
         }
 

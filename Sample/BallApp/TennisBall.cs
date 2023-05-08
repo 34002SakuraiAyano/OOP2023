@@ -35,8 +35,7 @@ namespace BallApp {
             Rectangle rBall = new Rectangle(pbBall.Location.X, pbBall.Location.Y, pbBall.Width, pbBall.Height);
 
             // Console.WriteLine("Ｘ座標 = {0}, Ｙ座標 = {1}", PosX, PosY);
-            if (PosY > 520 || PosY < 0 || rBar.IntersectsWith(rBall))
-            {
+            if (PosY > 520 || PosY < 0 || rBar.IntersectsWith(rBall)){
                 MoveY = -MoveY;
             }
 

@@ -9,6 +9,8 @@ namespace ProductSample {
     class Program {
         static void Main(string[] args) {
 
+            string[] DayOfWeek = { "日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日", };
+
             #region P24
             //インスタンスの生成
             Product karinto = new Product(123, "かりんとう", 180);
@@ -20,7 +22,7 @@ namespace ProductSample {
             #endregion
 
 
-           // # region 演習１,２
+          //# region 演習１,２
 
             //DateTime today = new DateTime(2023, 5, 8) ;
             DateTime today = DateTime.Today;
@@ -35,6 +37,7 @@ namespace ProductSample {
             DateTime daysBefore10 = today.AddDays(-10);
             Console.WriteLine("今日の１０日前は" + daysBefore10 + "日です");
             
+
             //生まれてから今日までの経過日数（TimeSpan）
             Console.WriteLine("誕生日を入力");
             Console.Write("西暦：");
@@ -44,11 +47,18 @@ namespace ProductSample {
             Console.Write("日：");
             int date = int.Parse(Console.ReadLine());
 
+            /* DateTime date1 = new DateTime(2012, 1, 3, 8,0,15);
+            DateTime date2 = new DateTime(2012, 8, 15, 15,31,40);
+            TimeSpan interval = date2 - date1;
+            Console.WriteLine("あなたは生まれてから今日まで" + interval.ToString() + "日目です"); */
+
             DateTime birth = new DateTime (year, month, date);
             TimeSpan ts2 = today - birth;
             Console.WriteLine("あなたは生まれてから今日まで" + ts2.Days + "日目です");
+            Console.WriteLine(DayOfWeek[(int)(birth.DayOfWeek)]);
 
-            //#endregion
+           // #endregion
+
 
         }
     }

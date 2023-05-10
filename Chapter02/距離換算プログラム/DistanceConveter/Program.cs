@@ -16,27 +16,20 @@ namespace DistanceConveter {
 
         //フィートからメートルへの対応表を出力
         private static void PrintFeetToMeterList(int start, int stop) {
+            FeetConverter fc = new FeetConverter ();  //For文中はリソースの無駄遣いになる
             for (int feet = start; feet <= stop; feet++) {
-                double meter = FeetToMeter ( feet );
+                double meter = fc.ToMeter ( feet );
                 Console.WriteLine ( "{0}ft = {1:0.0000}m", feet, meter );
             }
         }
 
         //メートルからフィートへの対応表を出力
         private static void PrintMeterToFeetList(int start, int stop) {
+            FeetConverter fc = new FeetConverter (); 
             for (int meter = start; meter <= stop; meter++) {
-                double feet = MeterToFeet ( meter );
+                double feet = fc.FromMeter ( meter );
                 Console.WriteLine ( "{0}m = {1:0.0000}ft", meter, feet );
             }
-        }
-
-        //フィートからメートルを求める
-        static double FeetToMeter(int feet) {
-            return feet * 0.3048;
-        }
-        //メートルからフィートを求める
-        static double MeterToFeet(int meter) {
-            return meter / 0.3048;
         }
     }
 }

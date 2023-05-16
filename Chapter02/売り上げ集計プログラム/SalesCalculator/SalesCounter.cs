@@ -11,24 +11,26 @@ namespace SalesCalculator {
         private List<Sale> _sales;
 
         //コンストラクタ
-        public SalesCounter(List<Sale> sales) {
-            _sales = sales;
+        public SalesCounter(string filePath) {
+            _sales = ReadSales ( filePath );
         }
 
         //店舗別に売上を求める
-        public Dictionary<string ,int> GetPerStoreSales() {
+        public Dictionary<string, int> GetPerStoreSales() {
             Dictionary<string, int> dict = new Dictionary<string, int> ();
             foreach (Sale sale in _sales) {
-                if (dict.ContainsKey(sale.ShopName)){
+                if (dict.ContainsKey ( sale.ShopName )) {
                     dict[sale.ShopName] += sale.Amount; //店名が既に存在する（売り上げ加算）
-                }else {
+                }
+                else {
                     dict[sale.ShopName] = sale.Amount;  //店名が存在しない（新規格納）
-                }             
+                }
             }
             return dict;
         }
+
         //売り上げデータを読み込み、Saleオブジェクトのリストを返す
-        public static List<Sale> ReadSales(string filePath) {
+        private List<Sale> ReadSales(string filePath) {
             List<Sale> sales = new List<Sale> (); //売り上げデータを格納
             string[] lines = File.ReadAllLines ( filePath ); //ファイルからすべてのデータを読み込む
 

@@ -8,7 +8,7 @@ namespace Exercise02 {
     //インチとメートルの単位変換クラス
     public static class InchConverter {
         //定数
-        private const double ratio = 0.3048;
+        private const double ratio = 0.0254;
 
         //メートルからインチを求める
         public static double FromMeter(double meter) {

@@ -19,9 +19,9 @@ namespace Exercise02 {
                     break;
 
                 case "-toi":
-                    PrintInchToMeterList ( start, end );
+                    PrintMeterToInchList ( start, end );
                     break;
-        }
+            }
             
         }
 

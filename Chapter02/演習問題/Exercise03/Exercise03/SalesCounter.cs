@@ -16,7 +16,20 @@ namespace Excersise03 {
             _sales = ReadSales ( filePath );
         }
 
-       
+        //店舗別に売上を求める
+        public IDictionary<string, int> GetPerStoreSales() {
+            var dict = new SortedDictionary<string, int> ();
+            foreach (var sale in _sales) {
+                if (dict.ContainsKey ( sale.ShopName )) {
+                    dict[sale.ShopName] += sale.Amount; //店名が既に存在する（売り上げ加算）
+                }
+                else {
+                    dict[sale.ShopName] = sale.Amount;  //店名が存在しない（新規格納）
+                }
+            }
+            return dict;
+        }
+
         //商品カテゴリー別に売上を求める
         public IDictionary<string, int> GetPerProductCategory() {
             var dict = new SortedDictionary<string, int> ();

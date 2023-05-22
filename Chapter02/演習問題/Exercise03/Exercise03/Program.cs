@@ -12,7 +12,7 @@ namespace Exercise03 {
             Console.WriteLine ( "**売上集計**" );
             Console.WriteLine ( "１：店舗別売り上げ" );
             Console.WriteLine ( "２：商品カテゴリー別売り上げ" );
-            int num = int.Parse ( Console.ReadLine () );
+            int num = int.Parse (  Console.ReadLine () );
 
             switch (num) {
                 case 1:

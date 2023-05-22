@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Exercise02 {
     class Program {
         static void Main(string[] args) {
-            if(args.Length < 3) {
+            if (args.Length < 3) {
                 return;
             }
 
@@ -15,16 +15,14 @@ namespace Exercise02 {
             int end = int.Parse ( args[2] );
             switch (args[0]) {
                 case "-tom":
-                PrintInchToMeterList ( start, end );
+                    PrintInchToMeterList ( start, end );
+                    break;
 
-                    break:
-            }
-            if (args[0] == "-tom" ) {
-                PrintInchToMeterList ( int.Parse(args[1]), int.Parse(args[2]) );
-            }
-            else if(args[0] == "-toi") {
-                PrintMeterToInchList ( int.Parse ( args[1] ), int.Parse ( args[2] ) );
-            }
+                case "-toi":
+                    PrintInchToMeterList ( start, end );
+                    break;
+        }
+            
         }
 
         //インチからメートルへの対応表を出力

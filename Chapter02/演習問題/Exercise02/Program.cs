@@ -10,6 +10,15 @@ namespace Exercise02 {
             if(args.Length < 3) {
                 return;
             }
+
+            int start = int.Parse ( args[1] );
+            int end = int.Parse ( args[2] );
+            switch (args[0]) {
+                case "-tom":
+                PrintInchToMeterList ( start, end );
+
+                    break:
+            }
             if (args[0] == "-tom" ) {
                 PrintInchToMeterList ( int.Parse(args[1]), int.Parse(args[2]) );
             }

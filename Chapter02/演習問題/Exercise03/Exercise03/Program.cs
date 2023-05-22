@@ -14,15 +14,15 @@ namespace Exercise03 {
             Console.WriteLine ( "２：商品カテゴリー別売り上げ" );
             int num = int.Parse ( Console.ReadLine () );
 
-            switch (args[0]) {
-                case "1":
+            switch (num) {
+                case 1:
                     var amountPerStore = sales.GetPerStoreSales ();
                     foreach (KeyValuePair<string, int> obj in amountPerStore) {
                         Console.WriteLine ( "{0} {1:#,0}", obj.Key, obj.Value );
                     }
                     break;
 
-                case "2":
+                case 2:
                     var amountPerCategory = sales.GetPerProductCategory ();
 
                     foreach (KeyValuePair<string, int> obj in amountPerCategory) {

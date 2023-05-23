@@ -11,8 +11,8 @@ namespace Section03 {
                "Tokyo", "New Delhi", "Bangkok", "London",
                 "Paris", "Berlin", "Canberra", "Hong Kong",
             };
-            //var exists = list.Exists ( s => s[0] == 'B' );
-            //Console.WriteLine (exists);
+            var exists = list.Exists ( s => s[0] == 'B' );
+            Console.WriteLine (exists);
 
             //var name = list.Find ( s => s.Length == 5 );
             //Console.WriteLine (name);
@@ -20,8 +20,8 @@ namespace Section03 {
             //var index = list.FindIndex ( s => s == "London" );
             //Console.WriteLine ( index );
 
-            var names = list.ConvertAll ( s => s.ToLower() );
-            names.ForEach ( s => Console.WriteLine(s) );
+            //var names = list.ConvertAll ( s => s.ToLower() );
+            //names.ForEach ( s => Console.WriteLine(s) );
         
         }
     }

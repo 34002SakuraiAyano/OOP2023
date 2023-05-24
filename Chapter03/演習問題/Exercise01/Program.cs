@@ -43,17 +43,21 @@ namespace Exercise01 {
         }
         
         private static void Exercise1_3(List<int> numbers) {
-            var num = numbers.Where ( n => n >= 50 );
-            foreach (var n in num) {
-                Console.WriteLine ( n );
-            }
+            numbers.Where ( n => n >= 50 ).ToList ().ForEach ( n => Console.WriteLine ( n + " " ) );
+
+           // var num = numbers.Where ( n => n >= 50 );
+           // foreach (var n in num) {
+            //    Console.WriteLine ( n );
+           // }
         }
 
         private static void Exercise1_4(List<int> numbers) {
-            List<int> query = (List<int>)numbers.Select ( n => n * 2).ToList ();
-            foreach (var n in query) {
-                Console.WriteLine ( n );
-            }
+            numbers.Where ( n => n >= 50 ).ToList ().ForEach ( Console.WriteLine );
+
+            //List<int> query = (List<int>)numbers.Select ( n => n * 2).ToList ();
+            //foreach (var n in query) {
+           //     Console.WriteLine ( n );
+           // }
         }
     }
 }

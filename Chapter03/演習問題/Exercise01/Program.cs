@@ -27,18 +27,19 @@ namespace Exercise01 {
 
 
         private static void Exercise1_1(List<int> numbers) {
-            var exists = numbers.Exists ( n => n % 8 == 0 || n % 9 == 0 );
+            var exists = numbers.Exists ( n => n % 8 == 0 || n % 9 == 0 ); //8または9
             Console.WriteLine ( exists );
 
             if (exists) {
                 Console.WriteLine ( "存在しています" );
-            }else {
+            }
+            else {
                 Console.WriteLine ( "存在していません" );
             }
         }
 
         private static void Exercise1_2(List<int> numbers) {
-        
+            numbers.ForEach ( s => Console.WriteLine(s/2.0) ); // ForEach(2.0)で割る
         }
 
         private static void Exercise1_3(List<int> numbers) {

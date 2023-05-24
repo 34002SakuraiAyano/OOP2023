@@ -37,7 +37,7 @@ namespace Exercise01 {
                 Console.WriteLine ( "存在していません" );
             }
         }
-
+        
         private static void Exercise1_2(List<int> numbers) {
             numbers.ForEach ( n => Console.WriteLine(n/2.0) ); // ForEach(2.0)で割る
         }
@@ -50,7 +50,10 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_4(List<int> numbers) {
-        
+            List<int> query = (List<int>)numbers.Select ( n => n * 2).ToList ();
+            foreach (var n in query) {
+                Console.WriteLine ( n );
+            }
         }
     }
 }

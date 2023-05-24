@@ -45,11 +45,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<string> names) {
-            var count = names.Where ( s => s.ToString ().Contains ( "o" ) );
-
-            foreach (var s in count) {
-                 Console.WriteLine ( s );
-             }
+            names.Where ( s => s.ToString ().Contains ( "o" ) ).ToList ().ForEach ( Console.WriteLine );
         }
 
         private static void Exercise2_4(List<string> names) {

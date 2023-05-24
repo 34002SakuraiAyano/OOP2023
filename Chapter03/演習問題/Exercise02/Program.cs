@@ -40,16 +40,27 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_2(List<string> names) {
-            var count = names.Count ( s => s.ToString ().Contains ( "o" ) ) ;
+            //var 
+            var count = names.Count ( s => s.Contains ( "o" ) ) ;
             Console.WriteLine ( count );
         }
 
         private static void Exercise2_3(List<string> names) {
-            names.Where ( s => s.ToString ().Contains ( "o" ) ).ToList ().ForEach ( Console.WriteLine );
+            //    names.Where ( s => s.Contains ( "o" ).ToArray ().ForEach ( Console.WriteLine ));
+
+            var selected = names.Where ( s => s.Contains ( "o" ) ).ToArray();
+             foreach (var name in selected) {
+                Console.WriteLine ( name );
+             }
         }
 
         private static void Exercise2_4(List<string> names) {
+            var selected = names.Where ( s => s.StartsWith("B") ).Select ( s => new { s,s.Length} );
 
+
+             foreach (var item in selected) {
+                Console.WriteLine ( "「{0}」は {1}文字 です", item.s , item.Length );
+             }
         }
     }
 }

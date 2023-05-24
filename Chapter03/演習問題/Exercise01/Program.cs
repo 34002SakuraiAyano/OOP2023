@@ -39,11 +39,14 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(List<int> numbers) {
-            numbers.ForEach ( s => Console.WriteLine(s/2.0) ); // ForEach(2.0)で割る
+            numbers.ForEach ( n => Console.WriteLine(n/2.0) ); // ForEach(2.0)で割る
         }
-
-        private static void Exercise1_3(List<int> numbers) {
         
+        private static void Exercise1_3(List<int> numbers) {
+            var num = numbers.Where ( n => n >= 50 );
+            foreach (var n in num) {
+                Console.WriteLine ( n );
+            }
         }
 
         private static void Exercise1_4(List<int> numbers) {

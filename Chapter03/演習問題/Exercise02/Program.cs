@@ -11,13 +11,13 @@ namespace Exercise02 {
                  "Tokyo", "New Delhi", "Bangkok", "London", "Paris", "Berlin", "Canberra", "Hong Kong",
             };
             Exercise2_1 ( names );
-            Console.WriteLine ();
+            Console.WriteLine ("----");
 
             Exercise2_2 ( names );
-            Console.WriteLine ();
+            Console.WriteLine ("-----");
 
             Exercise2_3 ( names );
-            Console.WriteLine ();
+            Console.WriteLine ( "-----" );
 
             Exercise2_4 ( names );
         }
@@ -45,7 +45,11 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<string> names) {
+            var count = names.Where ( s => s.ToString ().Contains ( "o" ) );
 
+            foreach (var s in count) {
+                 Console.WriteLine ( s );
+             }
         }
 
         private static void Exercise2_4(List<string> names) {

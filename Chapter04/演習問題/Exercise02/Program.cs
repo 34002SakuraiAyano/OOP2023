@@ -71,7 +71,7 @@ namespace Exercise02 {
             var array = ymCollection.Select ( ym => ym.AddOneMonth()).OrderBy(ym => ym.Year).ToArray ();
 
             Exercise2_2 ( array );
-           
+           String s = "sido";
         }
     }
 }

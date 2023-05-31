@@ -13,7 +13,7 @@ namespace Exercise02 {
 
             int num;
             if (int.TryParse ( line, out num )) {
-                Console.WriteLine ( "[0:#,000]" , num );
+                Console.WriteLine ( "{0:#,000}" , num );
 
             }else {
                 Console.WriteLine ( "数値文字列でない" );

@@ -26,8 +26,7 @@ namespace Exercise01 {
 
         public YearMonth AddOneMonth() {
             if (Month == 12) {
-                return new YearMonth ( Year + 1, 1 );
-            }
+                return new YearMonth ( Year + 1, 1 );}
             else {
                 return new YearMonth ( Year, Month + 1 );
             }

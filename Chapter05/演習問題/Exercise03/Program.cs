@@ -53,8 +53,9 @@ namespace Exercise03 {
             var sb = new StringBuilder ();
             foreach (var word in words) {
                 sb.Append ( word );
-                Console.Write( word );
             }
+            text = sb.ToString ();
+            Console.Write ( text );
         }
     }
 }

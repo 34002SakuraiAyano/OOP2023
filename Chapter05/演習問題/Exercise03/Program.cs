@@ -49,13 +49,16 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_5(string text) {
-            var words = text.Split ( ' ' ).ToList();
-            var sb = new StringBuilder ();
-            foreach (var word in words) {
+            var array = text.Split ( ' ' ).ToArray ();
+
+            var sb = new StringBuilder ( ); //文字連結
+
+            foreach (var word in array) { 
                 sb.Append ( word );
+                sb.Append ( ' ' );
             }
-            text = sb.ToString ();
-            Console.Write ( text );
+            var createWords = sb.ToString ().TrimEnd ();
+            Console.Write( createWords );
         }
     }
 }

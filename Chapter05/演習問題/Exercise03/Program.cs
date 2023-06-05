@@ -28,11 +28,12 @@ namespace Exercise03 {
 
         private static void Exercise3_1(string text) {
             var count = text.Count ( s => s.ToString().Contains ( " " ) );
-            Console.WriteLine ( count );
+            Console.WriteLine ( "空白数: " + count );
         }
 
         private static void Exercise3_2(string text) {
-
+            var replased = text.Replace ( "big", "small" );
+            Console.WriteLine ( replased );
         }
 
 

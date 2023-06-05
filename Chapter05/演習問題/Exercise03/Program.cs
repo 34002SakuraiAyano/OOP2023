@@ -27,7 +27,7 @@ namespace Exercise03 {
 
 
         private static void Exercise3_1(string text) {
-            var count = text.Count ( c => c.ToString().Contains ( " " ) );
+            var count = text.Count ( c => c.ToString ().Contains ( " " ) );
             Console.WriteLine ( "空白数: " + count );
         }
 
@@ -38,7 +38,7 @@ namespace Exercise03 {
 
         private static void Exercise3_3(string text) {
             string[] words = text.Split ( ' ' );
-            Console.WriteLine ("単語数：" +  words.Length );
+            Console.WriteLine ( "単語数：" + words.Length );
         }
 
         private static void Exercise3_4(string text) {
@@ -50,15 +50,15 @@ namespace Exercise03 {
 
         private static void Exercise3_5(string text) {
             var array = text.Split ( ' ' ).ToArray ();
-
-            var sb = new StringBuilder ( ); //文字連結
-
-            foreach (var word in array) { 
-                sb.Append ( word );
-                sb.Append ( ' ' );
+            if (array.Length > 0) {
+                var sb = new StringBuilder ( array[0] ); //文字連結
+                foreach (var word in array.Skip ( 1 )) {
+                    sb.Append ( word );
+                    sb.Append ( ' ' );
+                }
+                var createWords = sb.ToString ().TrimEnd ();
+                Console.Write ( createWords );
             }
-            var createWords = sb.ToString ().TrimEnd ();
-            Console.Write( createWords );
         }
     }
 }

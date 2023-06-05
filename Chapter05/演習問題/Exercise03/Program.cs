@@ -22,12 +22,12 @@ namespace Exercise03 {
             Console.WriteLine ( "-----" );
 
             Exercise3_5 ( text );
-         //   {\rtf1};
+            //{\rtf1};
         }
 
 
         private static void Exercise3_1(string text) {
-            var count = text.Count ( s => s.ToString().Contains ( " " ) );
+            var count = text.Count ( c => c.ToString().Contains ( " " ) );
             Console.WriteLine ( "空白数: " + count );
         }
 
@@ -42,13 +42,19 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_4(string text) {
-            var words = text.Split ( ' ' ).Where ( s => s.Length <= 4 );
+            var words = text.Split ( ' ' ).Where ( c => c.Length <= 4 );
             foreach (var names in words) {
                 Console.WriteLine ( names );
             }
         }
 
         private static void Exercise3_5(string text) {
+            var words = text.Split ( ' ' ).ToList();
+            var sb = new StringBuilder ();
+            foreach (var word in words) {
+                sb.Append ( word );
+                Console.Write( word );
+            }
         }
     }
 }

@@ -30,14 +30,14 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(int[] numbers) {
-            var result = numbers.Skip ( numbers.Length - 2 ).ToArray();
+            var result = numbers.Skip ( numbers.Length - 2 );
             foreach (var item in result) {
                 Console.WriteLine ( item );
             }
         }
 
         private static void Exercise1_3(int[] numbers) {
-            var strArray = numbers.Select (s=> s.ToString()).ToArray();
+            var strArray = numbers.Select (s=> s.ToString());
             foreach (var str in strArray) {
                 Console.WriteLine( str + " " );
             }

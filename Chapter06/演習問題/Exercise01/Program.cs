@@ -39,12 +39,15 @@ namespace Exercise01 {
         private static void Exercise1_3(int[] numbers) {
             var strArray = numbers.Select (s=> s.ToString()).ToArray();
             foreach (var str in strArray) {
-                Console.Write( str + " " );
+                Console.WriteLine( str + " " );
             }
         }
 
         private static void Exercise1_4(int[] numbers) {
-
+            var value = numbers.OrderBy ( x => x ).Select ( x => x ).Take ( 3 );
+            foreach (var num in value) {
+                Console.WriteLine ( num );
+            }
         }
 
         private static void Exercise1_5(int[] numbers) {

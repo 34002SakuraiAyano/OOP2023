@@ -19,7 +19,6 @@ namespace Section01 {
             foreach (var book in longTitle) {
                 Console.WriteLine ( "{0}:{1}", book.Title,book.Price );
             }
-
         }
     }
 }

@@ -61,6 +61,5 @@ namespace Excersise03 {
             }
             return sales;
         }
-
     }
 }

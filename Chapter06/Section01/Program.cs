@@ -15,6 +15,7 @@ namespace Section01 {
             double avgPage = books.Where( x=> x.Title.Contains( "物語" )).Average(x=> x.Pages) ;
             Console.WriteLine ( "{0}", avgPage);
 
+
             var longTitle = books.OrderByDescending ( x => x.Title.Length );
             foreach (var book in longTitle) {
                 Console.WriteLine ( "{0}:{1}", book.Title,book.Price );

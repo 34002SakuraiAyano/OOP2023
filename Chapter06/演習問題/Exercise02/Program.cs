@@ -58,11 +58,13 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<Book> books) {
-            var code = books.FirstOrDefault ( x => x.Price>= 4000 );
+            var code = books.FirstOrDefault ( x => x.Price >= 4000 );
             Console.WriteLine ( "{0}", code.Title );
         }
 
         private static void Exercise2_5(List<Book> books) {
+            var maxBooks = books.Where ( x => x.Price < 4000 ).Max ( x => x.Pages );
+            Console.WriteLine ( "{0}", maxBooks );
 
         }
 

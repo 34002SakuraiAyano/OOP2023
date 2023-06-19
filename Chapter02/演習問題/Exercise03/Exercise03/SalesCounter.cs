@@ -52,7 +52,7 @@ namespace Excersise03 {
 
             foreach (var Line in lines) {　//全ての行から1行ずつ取り出す
                 var items = Line.Split ( ',' ); //カンマ区切りで項目別に分ける
-                var sale = new Sale { //Salesインスタンスを生成
+                var sale = new Sale { //Saleインスタンスを生成
                     ShopName = items[0],
                     ProductCategory = items[1],
                     Amount = int.Parse ( items[2] ), //文字から数値

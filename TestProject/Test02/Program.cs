@@ -48,18 +48,18 @@ namespace Test02 {
         //問題３　昇順に並べて表示（遅延実行とする）
         //　　　　出力結果【12 14 17 20 31 35 40 48 53 76 87 91 94】
         private static void Exercise03(List<int> numbers) {
-            var nums = numbers.OrderBy ( n => n );
-            foreach (var value in nums) {
-                Console.Write ( "{0} " ,value );
+            var sortNums = numbers.OrderBy ( n => n );
+            foreach (var nums in sortNums) {
+                Console.Write ( "{0} " , nums );
             }
         }
 
         //問題４　10以上50以下の数字のみを表示（即時実行でも可とする）
         //　　　　出力結果【12 14 20 40 35 31 17 48】
         private static void Exercise04(List<int> numbers) {
-            var num = numbers.Where ( n => 10 <= n && n <= 50 );
-            foreach (var value2 in num) {
-                Console.Write ( "{0} ", value2 );
+            var selected = numbers.Where ( n => 10 <= n && n <= 50 );
+            foreach (var results in selected) {
+                Console.Write ( "{0} ", results );
             }
         }
     }

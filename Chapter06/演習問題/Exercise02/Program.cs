@@ -54,7 +54,7 @@ namespace Exercise02 {
 
         private static void Exercise2_3(List<Book> books) {
             double avgPage = books.Where ( x => x.Title.Contains ( "C#" ) ).Average ( x => x.Pages );
-            Console.WriteLine ( "{0}", avgPage );
+            Console.WriteLine ( "{0}ページ", avgPage );
         }
 
         private static void Exercise2_4(List<Book> books) {
@@ -64,12 +64,14 @@ namespace Exercise02 {
 
         private static void Exercise2_5(List<Book> books) {
             var maxBooks = books.Where ( x => x.Price < 4000 ).Max ( x => x.Pages );
-            Console.WriteLine ( "{0}", maxBooks );
-
+            Console.WriteLine ( "{0}ページ", maxBooks );
         }
 
         private static void Exercise2_6(List<Book> books) {
-
+            var value = books.Where ( x => x.Pages >= 400 ).OrderByDescending ( x => x.Price );
+            foreach (var book in value) {
+                Console.WriteLine ( "{0}：{1}円", book.Title , book.Price);
+            }
         }
 
         private static void Exercise2_7(List<Book> books) {

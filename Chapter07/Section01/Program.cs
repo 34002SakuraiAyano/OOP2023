@@ -57,14 +57,14 @@ namespace Section01 {
 
             if (select == "1" ) {
                 //一覧表示
-                foreach (var item in pc) {
-                    Console.WriteLine ( "{0}、{1}、人口{2:#,0}人です　", item.Key,item.Value.City , item.Value.Population );
+                foreach (var item in  pc.OrderByDescending(n=> n.Value.Population)) {
+                    Console.WriteLine ( "{0}、{1}、人口：{2:#,0}人です　", item.Key,item.Value.City , item.Value.Population );
                 }
             }else {
                 //県名指定処置
                 Console.Write ( "県名を入力：" );
                 var input = Console.ReadLine ();
-                Console.WriteLine( "{0}、所在地{1}、人口{2:#,0}人です　", input, pc[input].City, pc[input].Population );
+                Console.WriteLine( "{0}、所在地{1}、人口：{2:#,0}人です　", input, pc[input].City, pc[input].Population );
             }
         }
     }

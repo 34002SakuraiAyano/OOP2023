@@ -23,9 +23,9 @@ namespace Section01 {
             Console.WriteLine ( "あさがおの価格は{0}円です。", flowerDict["morning glory"] );
             */
 
-            var pc = new Dictionary<string, string> ();
+            var pc = new Dictionary<string, CityInfo> ();
             string pf,city;
-
+            int num;
             Console.WriteLine ( "県庁所在地の登録" );
 
             //重複の有無
@@ -37,6 +37,9 @@ namespace Section01 {
                 Console.Write ( "所在地：" );
                 city = Console.ReadLine ();
 
+                Console.Write ( "人口：" );
+                num = int.Parse ( Console.ReadLine () );
+
                 if (pc.ContainsKey ( pf )) {
                     Console.WriteLine ( "すでに県名入力済み" );
                     Console.Write ( "県名入力上書きするか y/n：" );
@@ -44,12 +47,25 @@ namespace Section01 {
                         continue;
                     }
                 }
-                pc[pf] = city;
+                pc[pf] = new CityInfo(city,num);
             }
-            //県名出力処置
-             Console.Write ( "県名：" );
-             var intput = Console.ReadLine();
-             Console.WriteLine ( pc[intput] + "です" );
+
+            Console.WriteLine ( "　" );
+            Console.WriteLine ("１：一覧表示, ２：県名指定");
+            Console.Write ( ">" );
+            var select = Console.ReadLine ();
+
+            if (select == "1" ) {
+                //一覧表示
+                foreach (var item in pc) {
+                    Console.WriteLine ( "{0}、{1}、{2}人です　" , item.Key,item.Value.City , item.Value.Population );
+                }
+            }else {
+                //県名指定処置
+                Console.Write ( "県名を入力：" );
+                var input = Console.ReadLine ();
+                Console.WriteLine ( "{0}、{1}、{2}人です　", input, pc[input].City, pc[input].Population );
+            }
         }
     }
 }

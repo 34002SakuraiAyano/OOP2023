@@ -30,7 +30,7 @@ namespace Section02 {
                 };
 
                 if (dict.ContainsKey ( pref )) {
-                    //List<CityInfo>が存在するためADDで市町村データを追加登録済み
+                    //List<CityInfo>が存在するためADDで市町村データを追加：登録済み
                     dict[pref].Add ( cityInfo );
                 }else {
                     dict[pref] = new List<CityInfo> { cityInfo };  //未登録（リスト作成）

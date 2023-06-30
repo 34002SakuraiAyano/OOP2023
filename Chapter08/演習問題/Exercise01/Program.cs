@@ -29,8 +29,6 @@ namespace Exercise01 {
                                               dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second );
             
             Console.WriteLine ( str );
-
-
         }
 
         private static void DisplayDatePattern3(DateTime dateTime) {
@@ -38,8 +36,7 @@ namespace Exercise01 {
             var culture = new CultureInfo ( "ja-jp" );
             culture.DateTimeFormat.Calendar = new JapaneseCalendar ();
             var dayOfWeek = culture.DateTimeFormat.GetDayName ( dateTime.DayOfWeek );
-            var str = dateTime.ToString ( "yyyy年MM月dd日(ddd曜日)", culture  ) ;
-            Console.Write ( dayOfWeek );
+            var str = dateTime.ToString ( "ggyy年M月d日(ddd曜日)", culture  ) ;       
             Console.WriteLine ( str );
         }
 

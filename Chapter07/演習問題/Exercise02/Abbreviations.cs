@@ -50,16 +50,13 @@ namespace Exercise02 {
             get {return _dict.Count ;}
         }
 
-
         //7-2-2
         public bool Remove(string abb) {
            return _dict.Remove ( abb );
         }
 
-
         public IEnumerator<KeyValuePair<string, string>> GetEnumerator() {
             return ((IEnumerable<KeyValuePair<string, string>>)_dict).GetEnumerator ();
-
         }
 
         IEnumerator IEnumerable.GetEnumerator() {

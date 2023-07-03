@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Exercise01 {
     class Program {
+        public static object NextDay { get; private set; }
+
         static void Main(string[] args) {
-            var dateTime = new DateTime ( 2019, 1, 15, 19, 48, 32 );
+            //var dateTime = new DateTime ( 2019, 1, 15, 19, 48, 32 );
+            var dateTime = DateTime.Now ;
             DisplayDatePattern1 ( dateTime );
             DisplayDatePattern2 ( dateTime );
             DisplayDatePattern3 ( dateTime );
@@ -36,12 +40,18 @@ namespace Exercise01 {
             var culture = new CultureInfo ( "ja-jp" );
             culture.DateTimeFormat.Calendar = new JapaneseCalendar ();
             var dayOfWeek = culture.DateTimeFormat.GetDayName ( dateTime.DayOfWeek );
-            var str = dateTime.ToString ( "ggyy年M月d日(ddd曜日)", culture  ) ;       
+            var str = dateTime.ToString ( "ggy年M月d日(ddd曜日)", culture  ) ;       
             Console.WriteLine ( str );
         }
 
         private static void DisplayDatePattern3_2(DateTime dateTime) {
+            var culture = new CultureInfo ( "ja-jp" );
+            culture.DateTimeFormat.Calendar = new JapaneseCalendar ();
 
+            var str = dateTime.ToString ( "gy年M月d日(ddd曜日)", culture );
+            //ゼロサプレス
+           var zero = Regex.Replace ( str, @"0(\d)", " $1" );
+            Console.WriteLine (str);
         }
     }
 }

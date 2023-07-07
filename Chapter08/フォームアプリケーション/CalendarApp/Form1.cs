@@ -14,17 +14,42 @@ namespace CalendarApp {
             InitializeComponent ();
         }    
 
+        //経過日数計算
         private void btDayCalc_Click(object sender, EventArgs e) {
             var bith = dtpDate.Value;
-            var _time = DateTime.Now;
+            var now = DateTime.Now;
 
-            var diff = _time - bith;
-            tbMessage.Text = "Textプロパティへ文字列を渡すと表示されます。";
-            tbMessage.Text = diff.ToString();
+            var diff = now - bith;
+            tbMessage.Text = "入力した日にちから"　+ diff.Days + "日経過";
         }
 
-        private void dtOneYear_Click(object sender, EventArgs e) {
-            var birth = dtpDate.Value.AddYears ( 1 );
+        //経過年数
+        private void btAge_Click(object sender, EventArgs e) {
+            //var birth = dtpDate.Value;
+            // var now = DateTime.Now;
+            //var age = GetAge ( birth, now );
+
+            var age = GetAge ( dtpDate.Value, DateTime.Now );
+            tbMessage.Text = "入力した日にちから今日まで" + age + "歳経過";
+        }
+
+        public static int GetAge(DateTime birth , DateTime targetDay) {
+            var age = targetDay.Year - birth.Year;
+            if (targetDay < birth.AddYears(age))
+                age--;
+            return age;
+        }
+
+        //実行時に一度だけ呼び出されるメソッド
+        private void Form1_Load(object sender, EventArgs e) {
+            var now = DateTime.Now;
+            teNowTime.Text = now.ToString ();
+            tmTimeDisp.Start();
+        }
+
+        //タイマーイベントハンドラー
+        private void tmTimeDisp_Tick(object sender, EventArgs e) {
+            teNowTime.Text = DateTime.Now.ToString ();
 
         }
     }

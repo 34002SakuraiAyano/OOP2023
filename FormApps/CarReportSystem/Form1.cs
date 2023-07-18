@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
-
         //管理用データ
         BindingList<CarReport> CarReports = new BindingList<CarReport> ();
+        private int mode;
+
 
         //コンストラクタ
         public Form1() {
@@ -58,7 +59,7 @@ namespace CarReportSystem {
 
         //記録者と車名履歴追加・重複なし
         private void CbAdd() {
-            if (!cbAuthor.Items.Contains(cbAuthor.Text)) {
+            if (!cbAuthor.Items.Contains ( cbAuthor.Text )) {
                 cbAuthor.Items.Add ( cbAuthor.Text );
             }
             if (!cbCarName.Items.Contains ( cbCarName.Text )) {
@@ -86,7 +87,6 @@ namespace CarReportSystem {
                     return (CarReport.MakerGroup)int.Parse ( ((RadioButton)item).Tag.ToString () );
                 }
             }
-
             return CarReport.MakerGroup.その他;
             /*    if (rbToyota.Checked) {
                    return CarReport.MakerGroup.トヨタ;
@@ -140,8 +140,10 @@ namespace CarReportSystem {
 
         //写真追加
         private void btImageOpen_Click(object sender, EventArgs e) {
-            ofdImageFileOpen.ShowDialog ();
-            pbCarImage.Image = Image.FromFile ( ofdImageFileOpen.FileName );
+            if (ofdImageFileOpen.ShowDialog () == DialogResult.OK) {
+                //  ofdImageFileOpen.ShowDialog ();
+                pbCarImage.Image = Image.FromFile ( ofdImageFileOpen.FileName );
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -161,38 +163,40 @@ namespace CarReportSystem {
             }
         }
 
-
+        //レコード選択時
         private void dgvCarReports_Click(object sender, EventArgs e) {
-            dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;  //日付
-            cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString ();  //記録者
+            if ( dgvCarReports.RowCount != 0) {
 
-            //var tmp = (CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value;  //メーカー
-            setSelectedMaker ( (CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value );
+                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;  //日付
+                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString ();  //記録者
 
-            cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString (); //車名
-            tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString ();  //レポート
-            pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;  //写真
+                //var tmp = (CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value;  //メーカー
+                setSelectedMaker ( (CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value );
+
+                cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString (); //車名
+                tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString ();  //レポート
+                pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;  //写真
+            }
         }
 
         //更新（修正）イベントハンドラ
         private void btModifyReport_Click(object sender, EventArgs e) {
-            //履歴追加
-            CbAdd ();
+            if (dgvCarReports.RowCount != 0) {
+                //履歴追加
+                CbAdd ();
 
-            CarReports[dgvCarReports.CurrentRow.Index].Date = dtpDate.Value;
-            CarReports[dgvCarReports.CurrentRow.Index].Author = cbAuthor.Text;
-            CarReports[dgvCarReports.CurrentRow.Index].Maker = getSelectdMaker ();
-            CarReports[dgvCarReports.CurrentRow.Index].CarName = cbCarName.Text;
-            CarReports[dgvCarReports.CurrentRow.Index].Report = tbReport.Text;
-            CarReports[dgvCarReports.CurrentRow.Index].CarImage = pbCarImage.Image;
-
-            //更新
-            dgvCarReports.Refresh ();
-
-            //項目クリア
-            ClearSelection ();
+                CarReports[dgvCarReports.CurrentRow.Index].Date = dtpDate.Value;
+                CarReports[dgvCarReports.CurrentRow.Index].Author = cbAuthor.Text;
+                CarReports[dgvCarReports.CurrentRow.Index].Maker = getSelectdMaker ();
+                CarReports[dgvCarReports.CurrentRow.Index].CarName = cbCarName.Text;
+                CarReports[dgvCarReports.CurrentRow.Index].Report = tbReport.Text;
+                CarReports[dgvCarReports.CurrentRow.Index].CarImage = pbCarImage.Image;
+                //更新
+                dgvCarReports.Refresh ();
+                //項目クリア
+                ClearSelection ();
+            }
         }
-
 
         //画像削除ボタン
         private void btImageDelete_Click(object sender, EventArgs e) {
@@ -210,10 +214,17 @@ namespace CarReportSystem {
             vf.ShowDialog ();  //モーダルダイヤログで表示
         }
 
+        //背景色変更
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (cdColor.ShowDialog() == DialogResult.Cancel) {  
+            if (cdColor.ShowDialog () == DialogResult.OK) {
                 BackColor = cdColor.Color;
             }
+        }
+
+        //サイズ変更
+        private void btScaleChange_Click(object sender, EventArgs e) {
+            mode = mode < 4 ? ++mode : 0;
+            pbCarImage.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
 }

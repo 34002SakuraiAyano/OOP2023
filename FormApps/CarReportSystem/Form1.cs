@@ -56,12 +56,12 @@ namespace CarReportSystem {
             ClearSelection ();
         }
 
-        //履歴追加　重複なし
+        //記録者と車名履歴追加・重複なし
         private void CbAdd() {
             if (!cbAuthor.Items.Contains(cbAuthor.Text)) {
                 cbAuthor.Items.Add ( cbAuthor.Text );
             }
-            if (!cbAuthor.Items.Contains ( cbAuthor.Text )) {
+            if (!cbCarName.Items.Contains ( cbCarName.Text )) {
                 cbCarName.Items.Add ( cbCarName.Text );
             }
         }
@@ -211,7 +211,9 @@ namespace CarReportSystem {
         }
 
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
-           var cC =  new ColorDialog ();
+            if (cdColor.ShowDialog() == DialogResult.Cancel) {  
+                BackColor = cdColor.Color;
+            }
         }
     }
 }

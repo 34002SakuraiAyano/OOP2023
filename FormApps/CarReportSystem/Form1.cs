@@ -56,11 +56,12 @@ namespace CarReportSystem {
             ClearSelection ();
         }
 
-        //履歴追加
+        //履歴追加　重複なし
         private void CbAdd() {
-            if (cbAuthor.Items.IndexOf ( cbAuthor.Text ) == -1) {
-                //アイテム一覧の一番上に登録
+            if (!cbAuthor.Items.Contains(cbAuthor.Text)) {
                 cbAuthor.Items.Add ( cbAuthor.Text );
+            }
+            if (!cbAuthor.Items.Contains ( cbAuthor.Text )) {
                 cbCarName.Items.Add ( cbCarName.Text );
             }
         }

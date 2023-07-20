@@ -92,7 +92,7 @@ namespace CarReportSystem {
             this.dtpDate.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(265, 19);
-            this.dtpDate.TabIndex = 1;
+            this.dtpDate.TabIndex = 0;
             // 
             // label2
             // 
@@ -123,7 +123,7 @@ namespace CarReportSystem {
             this.cbAuthor.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.cbAuthor.Name = "cbAuthor";
             this.cbAuthor.Size = new System.Drawing.Size(265, 20);
-            this.cbAuthor.TabIndex = 4;
+            this.cbAuthor.TabIndex = 1;
             // 
             // gbMaker
             // 
@@ -140,7 +140,7 @@ namespace CarReportSystem {
             this.gbMaker.Name = "gbMaker";
             this.gbMaker.Padding = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.gbMaker.Size = new System.Drawing.Size(363, 87);
-            this.gbMaker.TabIndex = 5;
+            this.gbMaker.TabIndex = 2;
             this.gbMaker.TabStop = false;
             this.gbMaker.Tag = "0";
             // 
@@ -151,7 +151,7 @@ namespace CarReportSystem {
             this.rbDaihatsu.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.rbDaihatsu.Name = "rbDaihatsu";
             this.rbDaihatsu.Size = new System.Drawing.Size(67, 16);
-            this.rbDaihatsu.TabIndex = 8;
+            this.rbDaihatsu.TabIndex = 9;
             this.rbDaihatsu.Tag = "5";
             this.rbDaihatsu.Text = "ダイハツ";
             this.rbDaihatsu.UseVisualStyleBackColor = true;
@@ -163,7 +163,7 @@ namespace CarReportSystem {
             this.rbOthers.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.rbOthers.Name = "rbOthers";
             this.rbOthers.Size = new System.Drawing.Size(58, 16);
-            this.rbOthers.TabIndex = 7;
+            this.rbOthers.TabIndex = 10;
             this.rbOthers.Tag = "7";
             this.rbOthers.Text = "その他";
             this.rbOthers.UseVisualStyleBackColor = true;
@@ -175,7 +175,7 @@ namespace CarReportSystem {
             this.rbSuzuki.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.rbSuzuki.Name = "rbSuzuki";
             this.rbSuzuki.Size = new System.Drawing.Size(58, 16);
-            this.rbSuzuki.TabIndex = 6;
+            this.rbSuzuki.TabIndex = 8;
             this.rbSuzuki.Tag = "4";
             this.rbSuzuki.Text = "スズキ";
             this.rbSuzuki.UseVisualStyleBackColor = true;
@@ -187,7 +187,7 @@ namespace CarReportSystem {
             this.rbImported.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.rbImported.Name = "rbImported";
             this.rbImported.Size = new System.Drawing.Size(59, 16);
-            this.rbImported.TabIndex = 5;
+            this.rbImported.TabIndex = 6;
             this.rbImported.Tag = "6";
             this.rbImported.Text = "輸入車";
             this.rbImported.UseVisualStyleBackColor = true;
@@ -199,7 +199,7 @@ namespace CarReportSystem {
             this.rbSubaru.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.rbSubaru.Name = "rbSubaru";
             this.rbSubaru.Size = new System.Drawing.Size(58, 16);
-            this.rbSubaru.TabIndex = 3;
+            this.rbSubaru.TabIndex = 7;
             this.rbSubaru.Tag = "3";
             this.rbSubaru.Text = "スバル";
             this.rbSubaru.UseVisualStyleBackColor = true;
@@ -211,7 +211,7 @@ namespace CarReportSystem {
             this.rbHonda.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.rbHonda.Name = "rbHonda";
             this.rbHonda.Size = new System.Drawing.Size(58, 16);
-            this.rbHonda.TabIndex = 2;
+            this.rbHonda.TabIndex = 5;
             this.rbHonda.Tag = "2";
             this.rbHonda.Text = "ホンダ";
             this.rbHonda.UseVisualStyleBackColor = true;
@@ -223,7 +223,7 @@ namespace CarReportSystem {
             this.rbNissan.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.rbNissan.Name = "rbNissan";
             this.rbNissan.Size = new System.Drawing.Size(47, 16);
-            this.rbNissan.TabIndex = 1;
+            this.rbNissan.TabIndex = 4;
             this.rbNissan.Tag = "1";
             this.rbNissan.Text = "日産";
             this.rbNissan.UseVisualStyleBackColor = true;
@@ -236,7 +236,7 @@ namespace CarReportSystem {
             this.rbToyota.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.rbToyota.Name = "rbToyota";
             this.rbToyota.Size = new System.Drawing.Size(54, 16);
-            this.rbToyota.TabIndex = 0;
+            this.rbToyota.TabIndex = 3;
             this.rbToyota.TabStop = true;
             this.rbToyota.Tag = "0";
             this.rbToyota.Text = "トヨタ";
@@ -260,7 +260,7 @@ namespace CarReportSystem {
             this.cbCarName.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.cbCarName.Name = "cbCarName";
             this.cbCarName.Size = new System.Drawing.Size(265, 20);
-            this.cbCarName.TabIndex = 7;
+            this.cbCarName.TabIndex = 3;
             // 
             // tbReport
             // 
@@ -269,7 +269,7 @@ namespace CarReportSystem {
             this.tbReport.Multiline = true;
             this.tbReport.Name = "tbReport";
             this.tbReport.Size = new System.Drawing.Size(363, 125);
-            this.tbReport.TabIndex = 8;
+            this.tbReport.TabIndex = 4;
             // 
             // label5
             // 
@@ -295,7 +295,7 @@ namespace CarReportSystem {
             this.dgvCarReports.RowTemplate.Height = 21;
             this.dgvCarReports.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarReports.Size = new System.Drawing.Size(797, 134);
-            this.dgvCarReports.TabIndex = 10;
+            this.dgvCarReports.TabIndex = 11;
             this.dgvCarReports.Click += new System.EventHandler(this.dgvCarReports_Click);
             // 
             // label6
@@ -326,7 +326,7 @@ namespace CarReportSystem {
             this.btImageDelete.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btImageDelete.Name = "btImageDelete";
             this.btImageDelete.Size = new System.Drawing.Size(90, 23);
-            this.btImageDelete.TabIndex = 14;
+            this.btImageDelete.TabIndex = 7;
             this.btImageDelete.Text = "削除";
             this.btImageDelete.UseVisualStyleBackColor = true;
             this.btImageDelete.Click += new System.EventHandler(this.btImageDelete_Click);
@@ -348,7 +348,7 @@ namespace CarReportSystem {
             this.btImageOpen.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btImageOpen.Name = "btImageOpen";
             this.btImageOpen.Size = new System.Drawing.Size(95, 23);
-            this.btImageOpen.TabIndex = 16;
+            this.btImageOpen.TabIndex = 6;
             this.btImageOpen.Text = "開く...";
             this.btImageOpen.UseVisualStyleBackColor = true;
             this.btImageOpen.Click += new System.EventHandler(this.btImageOpen_Click);
@@ -362,7 +362,7 @@ namespace CarReportSystem {
             this.btAddReport.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btAddReport.Name = "btAddReport";
             this.btAddReport.Size = new System.Drawing.Size(103, 44);
-            this.btAddReport.TabIndex = 17;
+            this.btAddReport.TabIndex = 9;
             this.btAddReport.Text = "追加";
             this.btAddReport.UseVisualStyleBackColor = false;
             this.btAddReport.Click += new System.EventHandler(this.btAddReport_Click);
@@ -377,7 +377,7 @@ namespace CarReportSystem {
             this.btModifyReport.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btModifyReport.Name = "btModifyReport";
             this.btModifyReport.Size = new System.Drawing.Size(103, 44);
-            this.btModifyReport.TabIndex = 18;
+            this.btModifyReport.TabIndex = 10;
             this.btModifyReport.Text = "修正";
             this.btModifyReport.UseVisualStyleBackColor = false;
             this.btModifyReport.Click += new System.EventHandler(this.btModifyReport_Click);
@@ -392,7 +392,7 @@ namespace CarReportSystem {
             this.btDeleteReport.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btDeleteReport.Name = "btDeleteReport";
             this.btDeleteReport.Size = new System.Drawing.Size(103, 44);
-            this.btDeleteReport.TabIndex = 19;
+            this.btDeleteReport.TabIndex = 11;
             this.btDeleteReport.Text = "削除";
             this.btDeleteReport.UseVisualStyleBackColor = false;
             this.btDeleteReport.Click += new System.EventHandler(this.btDeleteReport_Click);
@@ -520,7 +520,7 @@ namespace CarReportSystem {
             this.btScaleChange.Location = new System.Drawing.Point(821, 51);
             this.btScaleChange.Name = "btScaleChange";
             this.btScaleChange.Size = new System.Drawing.Size(87, 23);
-            this.btScaleChange.TabIndex = 26;
+            this.btScaleChange.TabIndex = 8;
             this.btScaleChange.Text = "サイズ変更";
             this.btScaleChange.UseVisualStyleBackColor = true;
             this.btScaleChange.Click += new System.EventHandler(this.btScaleChange_Click);
@@ -562,6 +562,7 @@ namespace CarReportSystem {
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "カーレポート管理システム";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbMaker.ResumeLayout(false);
             this.gbMaker.PerformLayout();

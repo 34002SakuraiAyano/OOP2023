@@ -19,7 +19,6 @@ namespace CarReportSystem {
         //設定情報（保存用）オブジェクト
         Settings settings = new Settings ();
 
-
         //コンストラクタ
         public Form1() {
             InitializeComponent ();
@@ -56,7 +55,6 @@ namespace CarReportSystem {
             btModifyReport.Enabled = true;
             btDeleteReport.Enabled = true;
             btScaleChange.Enabled = false;
-
 
             //⑦履歴追加
             CbAdd ();
@@ -152,22 +150,28 @@ namespace CarReportSystem {
                 //  ofdImageFileOpen.ShowDialog ();
                 pbCarImage.Image = Image.FromFile ( ofdImageFileOpen.FileName );
                 btScaleChange.Enabled = true;
-
+                btImageDelete.Enabled = true;
             }
         }
 
+        //Formを開いたとき
         private void Form1_Load(object sender, EventArgs e) {
-              dgvCarReports.Columns[5].Visible = false;　//画像項目非表示
-            tsInfoText.Text = "ここにメッセージを表示できる";
+            dgvCarReports.Columns[5].Visible = false;　//画像項目非表示
+            tsTime.Text = DateTime.Now.ToString ( "yyyy年MM月dd日HH時MM分ss秒" ); //情報表示領域のテキストを初期化
+            tsTime.BackColor = Color.Black;
+            tsTime.ForeColor = Color.White;
+            tmTimeUpdate.Start ();
+            tsInfoText.Text = " ";
 
-            if (CarReports.Count == 0) {
+            if (CarReports.Count == 0) { //マスク
                 btScaleChange.Enabled = false;
+                btImageDelete.Enabled = false;
             }
 
             using (var reader = XmlReader.Create ( "setting.xml" )) {
                 var serializer = new XmlSerializer ( typeof ( Settings ) );
-                var firstSet = serializer.Deserialize ( reader ) as Settings;
-                BackColor = Color.FromArgb ( firstSet.MainFormColor );
+                settings = serializer.Deserialize ( reader ) as Settings;
+                BackColor = Color.FromArgb ( settings.MainFormColor );
             }
         }
 
@@ -216,6 +220,8 @@ namespace CarReportSystem {
                 //項目クリア
                 ClearSelection ();
             }
+            btImageDelete.Enabled = false;
+
         }
 
         //画像削除ボタン
@@ -256,6 +262,10 @@ namespace CarReportSystem {
                 var serializer = new XmlSerializer ( settings.GetType());
                 serializer.Serialize (writer, settings );
             }
+        }
+
+        private void tmTimeUpdate_Tick(object sender, EventArgs e) {
+            tsTime.Text = DateTime.Now.ToString ("yyyy年MM月dd日HH時MM分ss秒"); //情報表示領域のテキストを初期化
         }
     }
 }

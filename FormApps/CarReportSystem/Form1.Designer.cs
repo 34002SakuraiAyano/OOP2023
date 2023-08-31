@@ -297,10 +297,12 @@ namespace CarReportSystem {
             this.dgvCarReports.MultiSelect = false;
             this.dgvCarReports.Name = "dgvCarReports";
             this.dgvCarReports.ReadOnly = true;
+            this.dgvCarReports.RowHeadersVisible = false;
             this.dgvCarReports.RowTemplate.Height = 21;
             this.dgvCarReports.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarReports.Size = new System.Drawing.Size(797, 134);
             this.dgvCarReports.TabIndex = 11;
+            this.dgvCarReports.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarReports_CellClick);
             this.dgvCarReports.Click += new System.EventHandler(this.dgvCarReports_Click);
             // 
             // label6

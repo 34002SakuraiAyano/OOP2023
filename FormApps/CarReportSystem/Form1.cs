@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -57,19 +59,26 @@ namespace CarReportSystem {
             btScaleChange.Enabled = false;
 
             //⑦履歴追加
-            CbAdd ();
+            setCbAuthor(cbAuthor.Text);
+            setCbCarName(cbCarName.Text);
 
             //⑤追加ボタンクリックで項目クリアする
             ClearSelection ();
+
+            dgvCarReports.ClearSelection ();
+
         }
 
         //記録者と車名履歴追加・重複なし
-        private void CbAdd() {
-            if (!cbAuthor.Items.Contains ( cbAuthor.Text )) {
-                cbAuthor.Items.Add ( cbAuthor.Text );
+        private void setCbAuthor(string author) {
+            if (!cbAuthor.Items.Contains ( author )) {
+                cbAuthor.Items.Add ( author );
+
             }
-            if (!cbCarName.Items.Contains ( cbCarName.Text )) {
-                cbCarName.Items.Add ( cbCarName.Text );
+        }
+        private void setCbCarName(string carname) {
+            if (!cbCarName.Items.Contains( carname )) {
+                cbCarName.Items.Add( carname );
             }
         }
 
@@ -156,16 +165,21 @@ namespace CarReportSystem {
 
         //Formを開いたとき
         private void Form1_Load(object sender, EventArgs e) {
+            
             dgvCarReports.Columns[5].Visible = false;　//画像項目非表示
             tsTime.Text = DateTime.Now.ToString ( "yyyy年MM月dd日HH時MM分ss秒" ); //情報表示領域のテキストを初期化
             tsTime.BackColor = Color.Black;
             tsTime.ForeColor = Color.White;
-            tmTimeUpdate.Start ();
+            tmTimeUpdate.Start (); //時刻更新用のタイマー
+
+            dgvCarReports.RowsDefaultCellStyle.BackColor = Color.LightGoldenrodYellow; //全体に色設定
+            dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.AntiqueWhite;　//奇数行の色を上書き設定
+
             tsInfoText.Text = " ";
 
             if (CarReports.Count == 0) { //マスク
-                btScaleChange.Enabled = false;  //
-                btImageDelete.Enabled = false;  //
+                btScaleChange.Enabled = false;  //サイズ変更ボタン
+                btImageDelete.Enabled = false;  //削除ボタン
             }
 
             try {
@@ -188,32 +202,33 @@ namespace CarReportSystem {
             CarReports.RemoveAt ( dgvCarReports.CurrentRow.Index );
             //マスク表示
             if (CarReports.Count == 0) {
-                btModifyReport.Enabled = false;
-                btDeleteReport.Enabled = false;
+                btModifyReport.Enabled = false; //修正
+                btDeleteReport.Enabled = false; //削除
             }
         }
 
         //レコード選択時
-        private void dgvCarReports_Click(object sender, EventArgs e) {
-            if ( dgvCarReports.RowCount != 0) {
+        private void dgvCarReports_Click(object sender, EventArgs e) {  //範囲選択コメント[ctrl + kc]
+            //if ( dgvCarReports.RowCount != 0) {
 
-                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;  //日付
-                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString ();  //記録者
+            //    dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;  //日付
+            //    cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString ();  //記録者
 
-                //var tmp = (CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value;  //メーカー
-                setSelectedMaker ( (CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value );
+            //    //var tmp = (CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value;  //メーカー
+            //    setSelectedMaker ( (CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value );
 
-                cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString (); //車名
-                tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString ();  //レポート
-                pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;  //写真
-            }
+            //    cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString (); //車名
+            //    tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString ();  //レポート
+            //    pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;  //写真
+            //}
         }
 
         //更新（修正）イベントハンドラ
         private void btModifyReport_Click(object sender, EventArgs e) {
             if (dgvCarReports.RowCount != 0) {
                 //履歴追加
-                CbAdd ();
+                setCbAuthor ( cbAuthor.Text );
+                setCbCarName ( cbCarName.Text );
 
                 CarReports[dgvCarReports.CurrentRow.Index].Date = dtpDate.Value;
                 CarReports[dgvCarReports.CurrentRow.Index].Author = cbAuthor.Text;
@@ -277,13 +292,61 @@ namespace CarReportSystem {
         //保存ボタン
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
             if (sfdCarRepoSave.ShowDialog () == DialogResult.OK) {
+                try {
+                    //バイナリ形式でシリアル化
+                    var bf = new BinaryFormatter ();
+                    using (FileStream fs = File.Open ( sfdCarRepoSave.FileName, FileMode.Create )) {
+                        bf.Serialize ( fs, CarReports );
+                    }
+                }
+                catch (Exception ex) {
+                    MessageBox.Show ( ex.Message );
+                }
             }
         }
 
         //開くボタン
         private void 開くToolStripMenuItem_Click(object sender, EventArgs e) {
             if (ofdCarRepoOpen.ShowDialog () == DialogResult.OK) {
+                try {
+                    //逆シリアル化でバイナリ形式を取り込む
+                    var bf = new BinaryFormatter ();
 
+                    using (FileStream fs = File.Open ( ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read )) {
+                        CarReports = (BindingList<CarReport>)bf.Deserialize ( fs );
+                        dgvCarReports.DataSource = null;
+                        dgvCarReports.DataSource = CarReports;
+
+                        //記録者と車名履歴/重複なし
+                        foreach (var carReport in CarReports) {
+                            setCbAuthor ( carReport.Author );
+                            setCbCarName ( carReport.CarName );
+                        }
+                        //選択行の解除
+                        dgvCarReports.ClearSelection ();
+
+                        //マスク
+                        btModifyReport.Enabled = true;  //修正
+                        btDeleteReport.Enabled = true;  //削除
+                        btScaleChange.Enabled = false;  //サイズ変更
+
+                    }
+                }
+                catch (Exception ex) {
+                    MessageBox.Show ( ex.Message );
+                }
+            }
+        }
+        private void dgvCarReports_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if (dgvCarReports.RowCount != 0) {
+                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;  //日付
+                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString ();  //記録者
+                //var tmp = (CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value;  //メーカー
+                setSelectedMaker ( (CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value );
+
+                cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString (); //車名
+                tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString ();  //レポート
+                pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;  //写真
             }
         }
     }

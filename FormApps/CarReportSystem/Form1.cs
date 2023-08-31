@@ -173,7 +173,9 @@ namespace CarReportSystem {
             tmTimeUpdate.Start (); //時刻更新用のタイマー
 
             dgvCarReports.RowsDefaultCellStyle.BackColor = Color.LightGoldenrodYellow; //全体に色設定
-            dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.AntiqueWhite;　//奇数行の色を上書き設定
+            dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.PowderBlue ;　//奇数行の色を上書き設定
+
+           // LightGoldenrodYellow
 
             tsInfoText.Text = " ";
 
@@ -311,11 +313,14 @@ namespace CarReportSystem {
                 try {
                     //逆シリアル化でバイナリ形式を取り込む
                     var bf = new BinaryFormatter ();
-
                     using (FileStream fs = File.Open ( ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read )) {
                         CarReports = (BindingList<CarReport>)bf.Deserialize ( fs );
                         dgvCarReports.DataSource = null;
                         dgvCarReports.DataSource = CarReports;
+
+                        //画像項目非表示
+                        dgvCarReports.Columns[5].Visible = false;　
+
 
                         //記録者と車名履歴/重複なし
                         foreach (var carReport in CarReports) {

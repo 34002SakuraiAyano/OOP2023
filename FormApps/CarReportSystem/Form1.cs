@@ -175,7 +175,6 @@ namespace CarReportSystem {
             dgvCarReports.RowsDefaultCellStyle.BackColor = Color.LightGoldenrodYellow; //全体に色設定
             dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.PowderBlue ;　//奇数行の色を上書き設定
 
-           // LightGoldenrodYellow
 
             tsInfoText.Text = " ";
 

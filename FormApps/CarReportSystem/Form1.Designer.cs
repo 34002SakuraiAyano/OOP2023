@@ -368,7 +368,7 @@ namespace CarReportSystem {
             this.btAddReport.Location = new System.Drawing.Point(541, 289);
             this.btAddReport.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btAddReport.Name = "btAddReport";
-            this.btAddReport.Size = new System.Drawing.Size(103, 44);
+            this.btAddReport.Size = new System.Drawing.Size(108, 78);
             this.btAddReport.TabIndex = 9;
             this.btAddReport.Text = "追加";
             this.btAddReport.UseVisualStyleBackColor = false;
@@ -383,7 +383,7 @@ namespace CarReportSystem {
             this.btModifyReport.Location = new System.Drawing.Point(671, 289);
             this.btModifyReport.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btModifyReport.Name = "btModifyReport";
-            this.btModifyReport.Size = new System.Drawing.Size(103, 44);
+            this.btModifyReport.Size = new System.Drawing.Size(103, 78);
             this.btModifyReport.TabIndex = 10;
             this.btModifyReport.Text = "修正";
             this.btModifyReport.UseVisualStyleBackColor = false;
@@ -398,7 +398,7 @@ namespace CarReportSystem {
             this.btDeleteReport.Location = new System.Drawing.Point(795, 289);
             this.btDeleteReport.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btDeleteReport.Name = "btDeleteReport";
-            this.btDeleteReport.Size = new System.Drawing.Size(103, 44);
+            this.btDeleteReport.Size = new System.Drawing.Size(103, 78);
             this.btDeleteReport.TabIndex = 11;
             this.btDeleteReport.Text = "削除";
             this.btDeleteReport.UseVisualStyleBackColor = false;

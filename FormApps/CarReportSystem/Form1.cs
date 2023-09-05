@@ -19,12 +19,15 @@ namespace CarReportSystem {
         private int mode;
 
         //設定情報（保存用）オブジェクト
-        Settings settings = new Settings ();
+       // Settings settings = new Settings ();
+
+        Settings settings = Settings.getInstance();
+
 
         //コンストラクタ
         public Form1() {
             InitializeComponent ();
-            dgvCarReports.DataSource = CarReports;
+          // dgvCarReports.DataSource = CarReports;
         }
 
         private void statusLabelDisp(string msg = "") {
@@ -165,7 +168,7 @@ namespace CarReportSystem {
 
         //Formを開いたとき
         private void Form1_Load(object sender, EventArgs e) {
-            
+
             dgvCarReports.Columns[5].Visible = false;　//画像項目非表示
             tsTime.Text = DateTime.Now.ToString ( "yyyy年MM月dd日HH時MM分ss秒" ); //情報表示領域のテキストを初期化
             tsTime.BackColor = Color.Black;
@@ -343,6 +346,7 @@ namespace CarReportSystem {
         }
         private void dgvCarReports_CellClick(object sender, DataGridViewCellEventArgs e) {
             if (dgvCarReports.RowCount != 0) {
+
                 dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;  //日付
                 cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString ();  //記録者
                 //var tmp = (CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value;  //メーカー
@@ -352,6 +356,20 @@ namespace CarReportSystem {
                 tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString ();  //レポート
                 pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;  //写真
             }
+        }
+
+        //DB保存
+        private void carReportTableBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
+            this.Validate ();
+            this.carReportTableBindingSource.EndEdit ();
+            this.tableAdapterManager.UpdateAll ( this.infosys202301DataSet );
+
+        }
+
+        //接続ボタン
+        private void btCollection_Click(object sender, EventArgs e) {
+            // TODO: このコード行はデータを 'infosys202301DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportTableTableAdapter.Fill ( this.infosys202301DataSet.CarReportTable );
         }
     }
 }

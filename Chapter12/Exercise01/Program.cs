@@ -64,10 +64,15 @@ namespace Exercise01 {
                     HireDate = new DateTime ( 2006, 12, 25 ), 
                 },
             };
-    
+
+            var settings = new XmlWriterSettings {
+                Encoding = new System.Text.UTF8Encoding ( false ),
+                Indent = true,
+                IndentChars = " ",
+            };
 
           //オブジェクトの内容をXMLファイルに保存（シリアル化）
-            using (var writer = XmlWriter.Create ( "employee.xml" )) {
+            using (var writer = XmlWriter.Create ( v,settings )) {
                 var serializer = new DataContractSerializer ( employees.GetType () );
                 serializer.WriteObject ( writer, employees );
             }
@@ -75,35 +80,47 @@ namespace Exercise01 {
 
         private static void Exercise1_3(string v) {
             //XMLファイルの内容をオブジェクトに復元（逆シリアル化）
-            using (XmlReader reader = XmlReader.Create ( "employee.xml" )) {
+            using (XmlReader reader = XmlReader.Create ( v )) {
                 var serializer = new DataContractSerializer ( typeof ( Employee[] ) );
-                var eemployees = serializer.ReadObject ( reader ) as Employee[];
-                foreach (var item in eemployees) {
-                    Console.WriteLine ( item );
+                var employees = serializer.ReadObject ( reader ) as Employee[];
+                foreach (var item in employees) {
+                    Console.WriteLine ( "ID：{0}, Name：{1}, HireDate：{2}",item.Id,item.Name,item.HireDate );
                 }
             }
         }
     
 
         private static void Exercise1_4(string v) {
-            var employees = new Employee[] {
-                new Employee {
+            var employees = new Employee2[] {
+                new Employee2 {
                     Id = 1034,   //int
                     Name = "田中",　//string
-                    HireDate = new DateTime ( 20010, 6, 6 ),//Datetime
+                    HireDate = new DateTime ( 2010, 6, 6 )//Datetime
                 },
-                new Employee {
+                new Employee2 {
                     Id = 1056,
                     Name = "鈴木",
-                    HireDate = new DateTime ( 2003, 8, 31 ),
+                    HireDate = new DateTime ( 2003, 8, 31 )
                 },
             };
-            using (var stream = new FileStream( "employees.json", FileMode.Create, FileAccess.Write )) {
+            using (var stream = new FileStream( v, FileMode.Create, FileAccess.Write )) {
                 var serializer = new DataContractJsonSerializer ( employees.GetType () );
                 serializer.WriteObject ( stream, employees );
             }
         }
     }
+
+    [DataContract] 
+    public class Employee2 {
+        public int Id { get; set; }
+
+        [DataMember(Name = "name")]
+        public string Name { get; set; }
+
+        [DataMember ( Name = "HireDate" )]
+        public DateTime HireDate { get; set; }
+    }
+
 }
 
 

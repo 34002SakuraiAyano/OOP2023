@@ -41,20 +41,31 @@ namespace CarReportSystem {
             if (cbAuthor.Text == "") {
                 statusLabelDisp ( "記録者を入力してください" );
                 return;
-            }
-            else if (cbCarName.Text == "") {
+            }else if (cbCarName.Text == "") {
                 statusLabelDisp ( "車名を入力してください" );
                 return;
             }
 
-            CarReports.Add ( new CarReport {
-                Date = dtpDate.Value,
-                Author = cbAuthor.Text,
-                Maker = getSelectdMaker (),
-                CarName = cbCarName.Text,
-                Report = tbReport.Text,
-                CarImage = pbCarImage.Image,
-            } );
+            DataRow newRow = infosys202301DataSet.CarReportTable.NewRow ();
+            newRow[1] = dtpDate.Value;
+            newRow[2] = cbAuthor.Text;
+            newRow[3] = getSelectdMaker ();
+            newRow[4] = cbCarName.Text;
+            newRow[5] = tbReport.Text;
+            newRow[6] = ImageToByteArray( pbCarImage.Image );
+
+            infosys202301DataSet.CarReportTable.Rows.Add ( newRow );
+            this.carReportTableTableAdapter.Update ( infosys202301DataSet.CarReportTable);
+
+
+            //CarReports.Add ( new CarReport {
+            //    Date = dtpDate.Value,
+            //    Author = cbAuthor.Text,
+            //    Maker = getSelectdMaker (),
+            //    CarName = cbCarName.Text,
+            //    Report = tbReport.Text,
+            //    CarImage = pbCarImage.Image,
+            //} );
 
             //マスク
             btModifyReport.Enabled = true;
@@ -201,14 +212,19 @@ namespace CarReportSystem {
 
         //削除ボタン
         private void btDeleteReport_Click(object sender, EventArgs e) {
+
+            dgvCarReports.Rows.RemoveAt ( dgvCarReports.CurrentRow.Index );
+            ClearSelection ();
+            carReportTableTableAdapter.Update ( infosys202301DataSet.CarReportTable ); //更新
+
+
             //   var dgv = dgvCarReports.CurrentRow;
             //  CarReports.RemoveAt(dgv.Index);
-            CarReports.RemoveAt ( dgvCarReports.CurrentRow.Index );
             //マスク表示
-            if (CarReports.Count == 0) {
-                btModifyReport.Enabled = false; //修正
-                btDeleteReport.Enabled = false; //削除
-            }
+            //if (CarReports.Count == 0) {
+            //    btModifyReport.Enabled = false; //修正
+            //    btDeleteReport.Enabled = false; //削除
+            //}
         }
 
         //レコード選択時
@@ -365,12 +381,16 @@ namespace CarReportSystem {
                 cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString (); //車名
                 tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString ();  //レポート
 
-             //   pbCarImage.Image = ByteArrayToImage ( (Byte[])dgvCarReports.CurrentRow.Cells[6].Value );  //写真表示
-                if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)) {
-                    pbCarImage.Image = ByteArrayToImage ( (Byte[])dgvCarReports.CurrentRow.Cells[6].Value );  //写真表示
-                }else {
-                    pbCarImage.Image = null;
-                }
+
+                //写真表示
+                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value) ?
+                          ByteArrayToImage ( (Byte[])dgvCarReports.CurrentRow.Cells[6].Value ) : null;
+                                            //　↓
+                //if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)) {
+                //    pbCarImage.Image = ByteArrayToImage ( (Byte[])dgvCarReports.CurrentRow.Cells[6].Value );  //写真表示
+                //}else {
+                //    pbCarImage.Image = null;
+                //}
 
                 btModifyReport.Enabled = true;  //修正
                 btDeleteReport.Enabled = true;  //削除

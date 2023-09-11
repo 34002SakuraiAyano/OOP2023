@@ -412,5 +412,21 @@ namespace CarReportSystem {
                 setCbCarName ( carReport.CarName );
             }
         }
+
+        private void btAuthorSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByAuthor ( this.infosys202301DataSet.CarReportTable , tbAuthorSearch.Text );
+        }
+
+        private void btCarNameSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByCarName ( this.infosys202301DataSet.CarReportTable , tbCarNameSearch.Text );
+        }
+
+        private void btDateSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByDate ( this.infosys202301DataSet.CarReportTable, tbDateSearch.Value.ToString () );
+        }
+
+        private void btReset_Click(object sender, EventArgs e) {
+
+        }
     }
 }

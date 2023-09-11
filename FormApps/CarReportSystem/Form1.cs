@@ -49,10 +49,10 @@ namespace CarReportSystem {
             DataRow newRow = infosys202301DataSet.CarReportTable.NewRow ();
             newRow[1] = dtpDate.Value;
             newRow[2] = cbAuthor.Text;
-            newRow[3] = getSelectdMaker ();
+            newRow[3] = getSelectdMaker();
             newRow[4] = cbCarName.Text;
             newRow[5] = tbReport.Text;
-            newRow[6] = ImageToByteArray( pbCarImage.Image );
+            newRow[6] = ImageToByteArray ( pbCarImage.Image );
 
             infosys202301DataSet.CarReportTable.Rows.Add ( newRow );
             this.carReportTableTableAdapter.Update ( infosys202301DataSet.CarReportTable);
@@ -87,7 +87,6 @@ namespace CarReportSystem {
         private void setCbAuthor(string author) {
             if (!cbAuthor.Items.Contains ( author )) {
                 cbAuthor.Items.Add ( author );
-
             }
         }
         private void setCbCarName(string carname) {
@@ -356,6 +355,7 @@ namespace CarReportSystem {
                             setCbAuthor ( carReport.Author );
                             setCbCarName ( carReport.CarName );
                         }
+
                         //選択行の解除
                         dgvCarReports.ClearSelection ();
 
@@ -383,7 +383,8 @@ namespace CarReportSystem {
 
 
                 //写真表示
-                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value) ?
+                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)
+                        &&((Byte[])dgvCarReports.CurrentRow.Cells[6].Value).Length != 0 ?
                           ByteArrayToImage ( (Byte[])dgvCarReports.CurrentRow.Cells[6].Value ) : null;
                                             //　↓
                 //if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)) {
@@ -421,10 +422,15 @@ namespace CarReportSystem {
 
         //接続ボタン
         private void btCollection_Click(object sender, EventArgs e) {
-            // TODO: このコード行はデータを 'infosys202301DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            // TODO: このコード行はデータを 'infosys202301DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。    
             this.carReportTableTableAdapter.Fill ( this.infosys202301DataSet.CarReportTable );
+
+            //記録者と車名履歴/重複なし
+            foreach (var carReport in infosys202301DataSet.CarReportTable) {
+                setCbAuthor ( carReport.Author );
+                setCbCarName ( carReport.CarName );
+            }
             dgvCarReports.ClearSelection();  //選択解除
         }
-
     }
 }

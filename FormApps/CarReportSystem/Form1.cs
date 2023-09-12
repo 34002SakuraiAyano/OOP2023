@@ -20,9 +20,7 @@ namespace CarReportSystem {
 
         //設定情報（保存用）オブジェクト
        // Settings settings = new Settings ();
-
         Settings settings = Settings.getInstance();
-
 
         //コンストラクタ
         public Form1() {
@@ -31,13 +29,12 @@ namespace CarReportSystem {
         }
 
         private void statusLabelDisp(string msg = "") {
-            //MessageBox.Show(msg);
             tsInfoText.Text = msg;
         }
 
         //追加ボタンがクリックされた時のイベントハンドラー
         private void btAddReport_Click(object sender, EventArgs e) {
-            statusLabelDisp ();//⑥ステータスラベルのテキスト非表示
+            statusLabelDisp ();        //⑥ステータスラベルのテキスト非表示
             if (cbAuthor.Text == "") {
                 statusLabelDisp ( "記録者を入力してください" );
                 return;
@@ -56,16 +53,6 @@ namespace CarReportSystem {
 
             infosys202301DataSet.CarReportTable.Rows.Add ( newRow );
             this.carReportTableTableAdapter.Update ( infosys202301DataSet.CarReportTable);
-
-
-            //CarReports.Add ( new CarReport {
-            //    Date = dtpDate.Value,
-            //    Author = cbAuthor.Text,
-            //    Maker = getSelectdMaker (),
-            //    CarName = cbCarName.Text,
-            //    Report = tbReport.Text,
-            //    CarImage = pbCarImage.Image,
-            //} );
 
             //マスク
             btModifyReport.Enabled = true;
@@ -131,7 +118,8 @@ namespace CarReportSystem {
                }else if (rbImported.Checked) {
                    return CarReport.MakerGroup.輸入車;
                }
-               return CarReport.MakerGroup.その他; */
+               return CarReport.MakerGroup.その他; 
+            */
         }
 
         //指定したメーカーのラジオボタンをセット
@@ -178,7 +166,6 @@ namespace CarReportSystem {
 
         //Formを開いたとき
         private void Form1_Load(object sender, EventArgs e) {
-
             dgvCarReports.Columns[6].Visible = false; //画像項目非表示
             dgvCarReports.Columns[0].Visible = false;　//ID項目非表示
 
@@ -189,7 +176,6 @@ namespace CarReportSystem {
 
             dgvCarReports.RowsDefaultCellStyle.BackColor = Color.LightGoldenrodYellow; //全体に色設定
             dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.PowderBlue ;　//奇数行の色を上書き設定
-
 
             tsInfoText.Text = " ";
 
@@ -358,7 +344,6 @@ namespace CarReportSystem {
                 cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString (); //車名
                 tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString ();  //レポート
 
-
                 //写真表示
                 pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)
                         &&((Byte[])dgvCarReports.CurrentRow.Cells[6].Value).Length != 0 ?
@@ -443,8 +428,6 @@ namespace CarReportSystem {
             tbDateSearch2.Value = DateTime.Today;
             tbAuthorSearch.Text = null;
             tbCarNameSearch.Text = null;
-
         }
-
     }
 }

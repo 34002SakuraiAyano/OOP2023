@@ -179,7 +179,9 @@ namespace CarReportSystem {
         //Formを開いたとき
         private void Form1_Load(object sender, EventArgs e) {
 
-            dgvCarReports.Columns[6].Visible = false;　//画像項目非表示
+            dgvCarReports.Columns[6].Visible = false; //画像項目非表示
+            dgvCarReports.Columns[0].Visible = false;　//ID項目非表示
+
             tsTime.Text = DateTime.Now.ToString ( "yyyy年MM月dd日HH時MM分ss秒" ); //情報表示領域のテキストを初期化
             tsTime.BackColor = Color.Black;
             tsTime.ForeColor = Color.White;
@@ -259,7 +261,6 @@ namespace CarReportSystem {
         private void 終了XToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit ();
         }
-
 
         private void バージョン情報ToolStripMenuItem_Click(object sender, EventArgs e) {
             var vf = new VersionForm ();
@@ -413,20 +414,37 @@ namespace CarReportSystem {
             }
         }
 
+        //日付検索
+        private void btDateSearch_Click(object sender, EventArgs e) {
+            //tbDateSearch1.Text も可
+            carReportTableTableAdapter.FillByDate ( this.infosys202301DataSet.CarReportTable , 
+                                              tbDateSearch1.Text , tbDateSearch2.Value.ToString () );            
+            dgvCarReports.ClearSelection ();  //選択解除
+        }
+
+        //記録者検索
         private void btAuthorSearch_Click(object sender, EventArgs e) {
             carReportTableTableAdapter.FillByAuthor ( this.infosys202301DataSet.CarReportTable , tbAuthorSearch.Text );
+            dgvCarReports.ClearSelection ();  
         }
 
+        //車名検索
         private void btCarNameSearch_Click(object sender, EventArgs e) {
             carReportTableTableAdapter.FillByCarName ( this.infosys202301DataSet.CarReportTable , tbCarNameSearch.Text );
+            dgvCarReports.ClearSelection (); 
         }
 
-        private void btDateSearch_Click(object sender, EventArgs e) {
-            carReportTableTableAdapter.FillByDate ( this.infosys202301DataSet.CarReportTable, tbDateSearch.Value.ToString () );
-        }
-
+        //リセットボタン
         private void btReset_Click(object sender, EventArgs e) {
+            this.carReportTableTableAdapter.Fill ( this.infosys202301DataSet.CarReportTable );
+            dgvCarReports.ClearSelection (); 
+
+            tbDateSearch1.Value = DateTime.Today;
+            tbDateSearch2.Value = DateTime.Today;
+            tbAuthorSearch.Text = null;
+            tbCarNameSearch.Text = null;
 
         }
+
     }
 }

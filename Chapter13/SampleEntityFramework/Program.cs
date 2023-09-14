@@ -20,11 +20,11 @@ namespace SampleEntityFramework {
 
             Console.WriteLine ();
             Console.WriteLine ( "# 1.3" );
-            Exercise1_3 ();
+           // Exercise1_3 ();
 
             Console.WriteLine ();
             Console.WriteLine ( "# 1.4" );
-            Exercise1_4 ();
+            //Exercise1_4 ();
 
             Console.WriteLine ();
             Console.WriteLine ( "# 1.5" );
@@ -47,12 +47,12 @@ namespace SampleEntityFramework {
             //    Console.WriteLine ( $"{book.Title} {book.Author.Name}" );
             //}
 
-            using (var db = new BooksDbContext()) {
+            using (var db = new BooksDbContext ()) {
 
                 db.Database.Log = sql => { Debug.Write ( sql ); };
 
                 var count = db.Books.Count ();
-                Console.WriteLine (count);
+                Console.WriteLine ( count );
             }
             Console.ReadLine ();
             Console.WriteLine ();
@@ -114,19 +114,33 @@ namespace SampleEntityFramework {
 
         //1-2
         private static void Exercise1_2() {
-            var db = new BooksDbContext ();
-                foreach (var book in db.Books) {
-                    Console.WriteLine ( $"{book.Title} : {book.PublishedYear} :" );
-                }
-        }
+            foreach (var book in GetBooks()) {
+                Console.WriteLine ( $"{book.Title} : {book.PublishedYear} :{book.Author.Name} " );
+            }
 
+            //using (var db = new BooksDbContext ()) {
+            //    foreach (var book in db.Books.ToArray()) {
+            //        Console.WriteLine ( $"{book.Title} : {book.PublishedYear} :{book.Author.Name} " );
+            //    }
+            //}
+
+        }
 
         private static void Exercise1_3() {
-                Console.WriteLine ( new BooksDbContext ().Books.Max ( c => c.Title ) );
+            using (var db = new BooksDbContext ()) {
+                Console.WriteLine ( db.Books.Max ( c => c.Title ) );
+            }
         }
 
-
         private static void Exercise1_4() {
+            using (var db = new BooksDbContext ()) {
+                var booksOrder = db.Books.OrderBy ( c => c.PublishedYear );
+                foreach (var item in GetBooks ()) {
+                    foreach (var book in booksOrder) {
+                        Console.WriteLine ( $"{book.Title} : {book.Author.Name}" );
+                    }
+                }
+            }
         }
 
         private static void Exercise1_5() {
@@ -165,8 +179,7 @@ namespace SampleEntityFramework {
         static IEnumerable<Book> GetBooks() {
             using (var db = new BooksDbContext ()) {
                 return db.Books
-                    .Where ( book => book.Author.Name.StartsWith ( "夏目" ) )
-                    .Include(nameof(Author))
+                    .Include ( nameof ( Author ) )
                     .ToList ();
             }
         }
@@ -206,8 +219,8 @@ namespace SampleEntityFramework {
                 var book1 = new Book {
                     Title = "みだれ髪",
                     PublishedYear = 2000,
-                    Author = author1 
-                    };
+                    Author = author1
+                };
                 db.Books.Add ( book1 );
 
                 var author2 = db.Authors.Single ( a => a.Name == "宮沢賢治" );

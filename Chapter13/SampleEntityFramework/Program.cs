@@ -20,7 +20,7 @@ namespace SampleEntityFramework {
 
             Console.WriteLine ();
             Console.WriteLine ( "# 1.3" );
-           // Exercise1_3 ();
+            Exercise1_3 ();
 
             Console.WriteLine ();
             Console.WriteLine ( "# 1.4" );
@@ -31,17 +31,6 @@ namespace SampleEntityFramework {
             Exercise1_5 ();
 
             Console.ReadLine ();
-
-
-            //InsertBooks ();
-            //Console.WriteLine ("データを挿入しました。続けるにはEnterキーを押してください。");
-
-            //  DisplayAllBooks ();
-            // AddAuthors ();
-            //AddBooks ();
-            // UpdateBook ();
-            // DeleteBook ();
-
 
             //foreach (var book in GetBooks()) {
             //    Console.WriteLine ( $"{book.Title} {book.Author.Name}" );
@@ -128,17 +117,20 @@ namespace SampleEntityFramework {
 
         private static void Exercise1_3() {
             using (var db = new BooksDbContext ()) {
-                Console.WriteLine ( db.Books.Max ( c => c.Title ) );
+                var books = db.Books
+                    .Where ( c => c.Title.Length == db.Books
+                    .Max( x => x.Title.Length ) );
+                foreach (var book in books.ToArray ()) {
+                    Console.WriteLine ( $"{book.Title} :{book.Author.Name} " );
+                }
             }
         }
 
         private static void Exercise1_4() {
             using (var db = new BooksDbContext ()) {
                 var booksOrder = db.Books.OrderBy ( c => c.PublishedYear );
-                foreach (var item in GetBooks ()) {
-                    foreach (var book in booksOrder) {
-                        Console.WriteLine ( $"{book.Title} : {book.Author.Name}" );
-                    }
+                foreach (var book in db.Books.ToArray ()) {
+                    Console.WriteLine ( $"{book.Title} : {book.PublishedYear} :{book.Author.Name} " );
                 }
             }
         }

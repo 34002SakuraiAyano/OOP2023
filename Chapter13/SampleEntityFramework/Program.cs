@@ -24,13 +24,13 @@ namespace SampleEntityFramework {
 
             Console.WriteLine ();
             Console.WriteLine ( "# 1.4" );
-            //Exercise1_4 ();
+            Exercise1_4 ();
 
             Console.WriteLine ();
             Console.WriteLine ( "# 1.5" );
             Exercise1_5 ();
 
-            Console.ReadLine ();
+            //Console.ReadLine ();
 
             //foreach (var book in GetBooks()) {
             //    Console.WriteLine ( $"{book.Title} {book.Author.Name}" );
@@ -128,16 +128,27 @@ namespace SampleEntityFramework {
 
         private static void Exercise1_4() {
             using (var db = new BooksDbContext ()) {
-                var booksOrder = db.Books.OrderBy ( c => c.PublishedYear );
-                foreach (var book in db.Books.ToArray ()) {
-                    Console.WriteLine ( $"{book.Title} : {book.PublishedYear} :{book.Author.Name} " );
+                var booksOrder = db.Books.OrderBy ( c => c.PublishedYear ).Take(3);
+                foreach (var book in booksOrder.ToArray()) {
+                    Console.WriteLine ( $" {book.PublishedYear} : {book.Title} : {book.Author.Name} " );
                 }
             }
         }
 
-        private static void Exercise1_5() {
-        }
 
+        private static void Exercise1_5() {
+            using (var db = new BooksDbContext ()) {
+                var groups = db.Authors.OrderByDescending ( c => c.Birthday );
+                foreach (var autors in groups.ToArray()) {
+                    Console.WriteLine ( "{0} : {1:yyyy/MM}", autors.Name, autors.Birthday );
+                    foreach (var book in autors.Books) {
+                        Console.WriteLine ( "{0}:{1}", book.Title, book.PublishedYear
+                                                , book.Author.Name ,book.Author.Birthday );
+                    }
+                    Console.WriteLine ();
+                }
+            }
+        }
 
         // List 13-5
         static void InsertBooks() {
@@ -152,6 +163,7 @@ namespace SampleEntityFramework {
                     }
                 };
                 db.Books.Add ( book1 );
+
                 var book2 = new Book {
                     Title = "人間失格",
                     PublishedYear = 1990,

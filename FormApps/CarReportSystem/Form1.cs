@@ -354,5 +354,6 @@ namespace CarReportSystem {
                 pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;  //写真
             }
         }
+
     }
 }

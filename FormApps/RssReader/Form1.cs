@@ -36,12 +36,10 @@ namespace RssReader {
         }
 
         //タイトル押したらウェブサイト行き
-
         private void lbRssTitle_SelectedIndexChanged_1(object sender, EventArgs e) {
             //インデックス番号を取得
             var item = lbRssTitle.SelectedIndex;
             wbBrowser.Navigate ( itemdDatas[item].Link );
-
         }
     }
 }

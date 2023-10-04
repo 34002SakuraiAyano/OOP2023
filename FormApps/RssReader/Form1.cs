@@ -22,6 +22,12 @@ namespace RssReader {
 
         //取得ボタン
         private void btGet_Click(object sender, EventArgs e) {
+            if (tbUrl.Text == "") {
+                return;
+            }
+            lbRssTitle.Items.Clear ();
+
+
             using (var wc = new WebClient ()) {
                 var url = wc.OpenRead ( tbUrl.Text );
                 XDocument xdoc = XDocument.Load ( url );
@@ -32,7 +38,8 @@ namespace RssReader {
                                 } ).ToList ();
 
                 foreach (var node in itemdDatas) {
-                    lbRssTitle.Items.Add ( node.Title );
+                        lbRssTitle.Items.Add ( node.Title );
+
                 }
             }
         }
@@ -40,14 +47,12 @@ namespace RssReader {
             //タイトル押したらウェブサイト行き
         private void lbRssTitle_SelectedIndexChanged_1(object sender, EventArgs e) {
             //インデックス番号を取得
-            if (lbRssTitle.SelectedIndex == -1) {
+            if (lbRssTitle.SelectedIndex == -1) 
                 return;
-            }
-            var item = lbRssTitle.SelectedIndex;
-            wbBrowser.Navigate ( itemdDatas[item].Link );
-            //  wbBrowser.Navigate ( itemdDatas[lbRssTitle.SelectedIndex].Link );
+                var item = lbRssTitle.SelectedIndex;
+                wbBrowser.Navigate ( itemdDatas[item].Link );
+               // wbBrowser.Navigate ( itemdDatas[lbRssTitle.SelectedIndex].Link );
 
         }
-
     }
 }

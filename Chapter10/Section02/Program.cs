@@ -3,10 +3,83 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Section02 {
     class Program {
         static void Main(string[] args) {
+            //IsMatch01 ();
+            //IsMatch02 ();
+            //StartWith ();
+            //EndWith ();
+            //PerfectMatch ();
+            PerfectMatch02 ();
+
+        }
+
+
+        //静的メソッドを利用した場合
+        private static void IsMatch01() {
+            var text = "private List<string> results = new List<string>();";
+            bool isMatch = Regex.IsMatch ( text, @"List<\w+>" ); //任意の文字１文字 + 1文字以上連続
+            if (isMatch)
+                Console.WriteLine ( "見つかりました" );
+            else
+                Console.WriteLine ("見つかりません");
+        }
+
+        //インスタンスメソッドを使用した場合
+        private static void IsMatch02() {
+            var text = "private List<string> results = new List<string>();";
+            var regex = new Regex ( @"List<\w+>" );　//任意の文字１文字 + 1文字以上連続
+            bool isMatch = regex.IsMatch(text); 
+            if (isMatch)
+                Console.WriteLine ( "見つかりました" );
+            else
+                Console.WriteLine ( "見つかりません" );
+        }
+
+        public static void StartWith() {
+            var text = "using System.Text.RegularExpressions;";
+            bool isMatch = Regex.IsMatch ( text, @"^using" ); 　//　^ = 行頭
+            if (isMatch)
+                Console.WriteLine ( "'using'で始まっています" );
+            else
+                Console.WriteLine ( "'using'で始まっていません" );
+        }
+
+        public static void EndWith() {
+            var text = "Regexクラスを使った文字列操作について説明します。";
+            bool isMatch = Regex.IsMatch ( text, @"ます。$" );  // $ = 行末
+            if (isMatch)
+                Console.WriteLine ( "'ます。'で終わっています" );
+            else
+                Console.WriteLine ( "'ます。'で終わっていません" );
+        }
+
+        //10-5
+        public static void PerfectMatch() {
+            var strings = new[] { "Microsoft Windows", "Windows Server", "Windows", };
+            var regex = new Regex ( @"(W|w)indows" );  //行頭(^)と行末($)。
+                                                         //最初がWかwで最後の文字がindowsのものを探す
+            var count = strings.Count ( s => regex.IsMatch ( s ) );
+            Console.WriteLine ( "{0}行と一致", count );
+        }
+
+        //10-7
+        public static void PerfectMatch02() {
+            var strings = new[] { "13000", "-50.6", "0.123",  "+180.00",
+        "10.2.5", "320-0851", "123 - 5678", "$1200", "500円", };
+
+            //var regex = new Regex ( @"^[-+]?(\d+)(\.\d+)?$" );
+            var regex = new Regex ( @"^\d{3}-\d{4}$" );
+
+
+            foreach (var s in strings) {
+                var isMatch = regex.IsMatch ( s );
+                if (isMatch)
+                    Console.WriteLine ( s );
+            }
         }
     }
 }

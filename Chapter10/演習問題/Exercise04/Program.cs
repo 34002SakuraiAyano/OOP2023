@@ -12,7 +12,7 @@ namespace Exercise04 {
             var lines = File.ReadAllLines("sample.txt");
 
             var newlines = lines
-                .Select ( s => Regex.Replace( s, @"\b(v|V)ersion\s*=\s*""v4.0""", @"version=""v5.0""" ) );
+                .Select ( s => Regex.Replace( s, @"\b[Vv]ersion\s*=\s*""v4.0""", @"version=""v5.0""" ) );
             //　\s* 任意の数の空白文字
 
             //書き込み

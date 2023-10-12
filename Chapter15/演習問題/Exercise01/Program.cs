@@ -11,11 +11,11 @@ namespace Exercise01 {
             //Exercise1_2 ();
             //Console.WriteLine ();
 
-            Exercise1_3 ();
-            Console.WriteLine ();
-
-            //Exercise1_4 ();
+            //Exercise1_3 ();
             //Console.WriteLine ();
+
+            Exercise1_4 ();
+            Console.WriteLine ();
 
             //Exercise1_5 ();
             //Console.WriteLine ();
@@ -54,19 +54,21 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_4() {
-            //var selected = Library.Books.OrderByDescending( b => b.PublishedYear)
-            //    .ThenByDescending(b => b.Price)
-            //    .Join(Library.Categories,
-            //        book => book.CategoryId,
-            //        category => category.Id,
-            //        (book,category ) => new {
-            //            Title = book.Title,
-            //            Category = category.Name,
-            //            PublishedYear = book.PublishedYear
-            //        });
-            //foreach (var book in selected) {
-            //    Console.WriteLine ( $"{book.PublishedYear}年 {book.} {book.Title}({category.n})" );
-            //}
+            var selected = Library.Books.OrderByDescending ( b => b.PublishedYear )
+                .ThenByDescending ( b => b.Price )
+                .Join ( Library.Categories,
+                    book => book.CategoryId,
+                    category => category.Id,
+                    (book, category) => new {
+                        Title = book.Title,
+                        Category = category.Name,
+                        PublishedYear = book.PublishedYear,
+                        Price = book.Price,
+                        Name = category.Name
+                    } );
+            foreach (var book in selected) {
+                Console.WriteLine ( $"{book.PublishedYear}年 {book.Price} {book.Title}({book.Name})" );
+            }
         }
 
         private static void Exercise1_5() {

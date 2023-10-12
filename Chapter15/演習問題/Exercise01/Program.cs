@@ -8,18 +8,24 @@ namespace Exercise01 {
     class Program {
         static void Main(string[] args) {
 
-            Exercise1_2 ();
-            Console.WriteLine ();
-            //Exercise1_3 ();
+            //Exercise1_2 ();
             //Console.WriteLine ();
+
+            Exercise1_3 ();
+            Console.WriteLine ();
+            
             //Exercise1_4 ();
             //Console.WriteLine ();
+            
             //Exercise1_5 ();
             //Console.WriteLine ();
+            
             //Exercise1_6 ();
             //Console.WriteLine ();
+            
             //Exercise1_7 ();
             //Console.WriteLine ();
+            
             //Exercise1_8 ();
 
             Console.ReadLine ();
@@ -32,6 +38,13 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3() {
+            var groups = Library.Books
+                                .GroupBy ( b => b.PublishedYear )
+                                .OrderBy ( g => g.Key );
+            foreach (var g in groups) {
+                Console.Write ( $"{g.Key}年 : " );
+                Console.WriteLine ( g.Count() );
+            }
         }
 
         private static void Exercise1_4() {

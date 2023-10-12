@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RssReader {
-    class ItemData {
+    [Serializable]
+    public class ItemData {
         public string Title { get; set; }
         public string Link { get; set; }
+
     }
 }

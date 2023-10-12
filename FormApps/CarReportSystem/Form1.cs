@@ -97,8 +97,6 @@ namespace CarReportSystem {
             // int tag = 0;
             foreach (var item in gbMaker.Controls) {
                 if (((RadioButton)item).Checked) {
-                    //tag = int.Parse ( ((RadioButton)item).Tag.ToString () );
-                    //break;
                     return (CarReport.MakerGroup)int.Parse ( ((RadioButton)item).Tag.ToString () );
                 }
             }

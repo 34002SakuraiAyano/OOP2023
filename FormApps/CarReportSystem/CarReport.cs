@@ -38,7 +38,6 @@ namespace CarReportSystem {
             ダイハツ,
             輸入車,
             その他,
-
         }
     }
 }

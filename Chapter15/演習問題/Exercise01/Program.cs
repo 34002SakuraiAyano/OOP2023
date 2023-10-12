@@ -17,11 +17,11 @@ namespace Exercise01 {
             //Exercise1_4 ();
             //Console.WriteLine ();
 
-            Exercise1_5 ();
-            Console.WriteLine ();
-
-            //Exercise1_6 ();
+            //Exercise1_5 ();
             //Console.WriteLine ();
+
+            Exercise1_6 ();
+            Console.WriteLine ();
 
             //Exercise1_7 ();
             //Console.WriteLine ();
@@ -83,7 +83,17 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_6() {
-        
+            var groups = Library.Categories.OrderBy(c=> c.Name).GroupJoin ( Library.Books,
+                    c => c.Id,
+                    b => b.CategoryId,
+                    (c, books) => new {
+                        Category = c.Name, Books = books} );
+            foreach (var group in groups) {
+                Console.WriteLine ( group.Category );
+                foreach (var item in group.Books) {
+                    Console.WriteLine ( $"　{item.Title}" );
+                }
+            }
         }
 
         private static void Exercise1_7() {

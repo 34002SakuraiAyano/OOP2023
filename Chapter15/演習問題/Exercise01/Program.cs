@@ -14,11 +14,11 @@ namespace Exercise01 {
             //Exercise1_3 ();
             //Console.WriteLine ();
 
-            Exercise1_4 ();
-            Console.WriteLine ();
-
-            //Exercise1_5 ();
+            //Exercise1_4 ();
             //Console.WriteLine ();
+
+            Exercise1_5 ();
+            Console.WriteLine ();
 
             //Exercise1_6 ();
             //Console.WriteLine ();
@@ -64,15 +64,22 @@ namespace Exercise01 {
                         Category = category.Name,
                         PublishedYear = book.PublishedYear,
                         Price = book.Price,
-                        Name = category.Name
                     } );
             foreach (var book in selected) {
-                Console.WriteLine ( $"{book.PublishedYear}年 {book.Price} {book.Title}({book.Name})" );
+                Console.WriteLine ( $"{book.PublishedYear}年 {book.Price} {book.Title}({book.Category})" );
             }
         }
 
         private static void Exercise1_5() {
-        
+            var books = Library.Books.Where ( b => b.PublishedYear == 2016 )
+                .Join ( Library.Categories,
+                    book => book.CategoryId,
+                    category => category.Id,
+                    (book, category) => category.Name ).Distinct ();
+
+            foreach (var name in books) {
+                Console.WriteLine ( name );
+            }
         }
 
         private static void Exercise1_6() {

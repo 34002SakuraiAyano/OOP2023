@@ -20,13 +20,13 @@ namespace Exercise01 {
             //Exercise1_5 ();
             //Console.WriteLine ();
 
-            Exercise1_6 ();
-            Console.WriteLine ();
+            //Exercise1_6 ();
+            //Console.WriteLine ();
 
             //Exercise1_7 ();
             //Console.WriteLine ();
 
-            //Exercise1_8 ();
+            Exercise1_8 ();
 
             Console.ReadLine ();
         }
@@ -83,7 +83,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_6() {
-            var groups = Library.Categories.OrderBy(c=> c.Name).GroupJoin ( Library.Books,
+            var groups = Library.Categories.OrderBy( c=> c.Name).GroupJoin ( Library.Books,
                     c => c.Id,
                     b => b.CategoryId,
                     (c, books) => new {
@@ -97,11 +97,29 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_7() {
-        
+            var catied = Library.Categories.Single ( c => c.Name == "Development" ).Id;
+            var groups = Library.Books.Where ( b => b.CategoryId == catied )
+                                        .GroupBy ( b => b.PublishedYear )
+                                        .OrderBy ( b => b.Key );
+            foreach (var group in groups) {
+                Console.WriteLine ( "#{0}年" , group.Key );
+                foreach (var item in group) {
+                    Console.WriteLine ( "　{0}", item.Title );
+                }
+            }
         }
 
         private static void Exercise1_8() {
-        
+            var groups = Library.Categories.GroupJoin ( Library.Books,
+                   c => c.Id,
+                   b => b.CategoryId,
+                   (c, b) => new {
+                       CategoryName = c.Name,
+                       Count = b.Count ()
+                   } ).Where(x => x.Count>=4);
+            foreach (var item in groups) {
+                Console.WriteLine ( item.CategoryName );
+            }
         }
     }
 }

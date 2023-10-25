@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Exercise03 {
-    //public static void Main(string[] args) {
-
-    //}
+    class Program {
+        static void Main(string[] args) {
+        }
+    }
 }

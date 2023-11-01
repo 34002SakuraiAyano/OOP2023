@@ -12,7 +12,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="colorArea" Margin="10,17,10,10" Background="PaleGreen" />
+        <Label x:Name="colorArea" Margin="10,17,10,10" Background="AliceBlue"/>
 
 
         <Grid Grid.Column="1">
@@ -30,21 +30,34 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="R"/>
-            <Slider x:Name="rSlider" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Maximum="256" ValueChanged="Slider_ValueChanged"/>
+            <Slider x:Name="rSlider" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Maximum="255" ValueChanged="Slider_ValueChanged"/>
             <TextBox x:Name="rValue" Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" 
-                     Text="{Binding ElementName=rSlider,Path=Value,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                     Text="{Binding ElementName=rSlider,Path=Value,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,StringFormat={}{0:0}}"/>
 
             <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="G"/>
-            <Slider x:Name="gSlider" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Maximum="256" ValueChanged="Slider_ValueChanged"/>
+            <Slider x:Name="gSlider" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Maximum="255" ValueChanged="Slider_ValueChanged"/>
             <TextBox x:Name="gValue" Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom"
-                     Text="{Binding ElementName=gSlider,Path=Value,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                     Text="{Binding ElementName=gSlider,Path=Value,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,StringFormat={}{0:0}}"/>
 
             <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Text="B"/>
-            <Slider x:Name="bSlider" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Maximum="256" ValueChanged="Slider_ValueChanged"/>
+            <Slider x:Name="bSlider" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Maximum="255" ValueChanged="Slider_ValueChanged"/>
             <TextBox x:Name="bValue" Grid.Row="2" Grid.Column="2" VerticalAlignment="Bottom"
-                     Text="{Binding ElementName=bSlider,Path=Value,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-            <ComboBox Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Width="120"/>
-
+                     Text="{Binding ElementName=bSlider,Path=Value,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,StringFormat={}{0:0}}"/>
+            <ComboBox Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Width="120" 
+                      ItemsSource="{Binding}" SelectedValue="{Binding Color}" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{Binding Color}"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </Grid>
 
 

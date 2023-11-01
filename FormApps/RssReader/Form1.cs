@@ -53,7 +53,6 @@ namespace RssReader {
             var item = lbRssTitle.SelectedIndex;
             wbBrowser.Navigate ( itemdDatas[item].Link );
             // wbBrowser.Navigate ( itemdDatas[lbRssTitle.SelectedIndex].Link );
-
         }
         //private void setSelectedMaker(CarReport.TopicGroup topicGroup) {
         //    switch (topicGroup) {

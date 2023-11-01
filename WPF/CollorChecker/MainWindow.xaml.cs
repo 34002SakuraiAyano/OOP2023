@@ -38,18 +38,21 @@ namespace CollorChecker {
             //var color = makeColor.Color;
             //var name = makeColor.Name;
 
-
+            //色クリックで背景変わる
+            if (makeColor != null) {
+                var brush = new System.Windows.Media.SolidColorBrush ( makeColor.Color );
+                colorArea.Background = brush;
+            }
         }
+
 
 
         //ストックボタン
         private void stockButton_Click(object sender, RoutedEventArgs e) {
-
             //stockList.Items.Add ( rValue.Text );
             //stockList.Items.Add ( gValue.Text );
             //stockList.Items.Add ( bValue.Text );
             stockList.Items.Insert( 0,makeColor);
-
         }
 
 

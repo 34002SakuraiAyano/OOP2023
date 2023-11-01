@@ -43,7 +43,7 @@
             <Slider x:Name="bSlider" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Maximum="255" ValueChanged="Slider_ValueChanged"/>
             <TextBox x:Name="bValue" Grid.Row="2" Grid.Column="2" VerticalAlignment="Bottom"
                      Text="{Binding ElementName=bSlider,Path=Value,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,StringFormat={}{0:0}}"/>
-            <ComboBox Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Width="120" 
+            <ComboBox x:Name="Click" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Width="120" 
                       ItemsSource="{Binding}" SelectedValue="{Binding Color}" SelectionChanged="ComboBox_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>

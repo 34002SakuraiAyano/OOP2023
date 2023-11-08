@@ -47,7 +47,7 @@ namespace RssReader {
             // 
             // btGet
             // 
-            this.btGet.Location = new System.Drawing.Point(774, 23);
+            this.btGet.Location = new System.Drawing.Point(746, 23);
             this.btGet.Name = "btGet";
             this.btGet.Size = new System.Drawing.Size(58, 28);
             this.btGet.TabIndex = 1;
@@ -59,59 +59,62 @@ namespace RssReader {
             // 
             this.lbRssTitle.FormattingEnabled = true;
             this.lbRssTitle.ItemHeight = 12;
-            this.lbRssTitle.Location = new System.Drawing.Point(22, 57);
+            this.lbRssTitle.Location = new System.Drawing.Point(130, 71);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(810, 136);
+            this.lbRssTitle.Size = new System.Drawing.Size(674, 76);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged_1);
             // 
             // wbBrowser
             // 
-            this.wbBrowser.Location = new System.Drawing.Point(243, 211);
+            this.wbBrowser.Location = new System.Drawing.Point(136, 153);
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
             this.wbBrowser.ScriptErrorsSuppressed = true;
-            this.wbBrowser.Size = new System.Drawing.Size(589, 479);
+            this.wbBrowser.Size = new System.Drawing.Size(668, 404);
             this.wbBrowser.TabIndex = 3;
             // 
             // rbMain
             // 
             this.rbMain.AutoSize = true;
-            this.rbMain.Location = new System.Drawing.Point(23, 28);
+            this.rbMain.Location = new System.Drawing.Point(10, 18);
             this.rbMain.Name = "rbMain";
             this.rbMain.Size = new System.Drawing.Size(47, 16);
             this.rbMain.TabIndex = 4;
             this.rbMain.TabStop = true;
             this.rbMain.Text = "主要";
             this.rbMain.UseVisualStyleBackColor = true;
+            this.rbMain.CheckedChanged += new System.EventHandler(this.rbMain_CheckedChanged);
             // 
             // gbToppics
             // 
+            this.gbToppics.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.gbToppics.Controls.Add(this.rbEnter);
             this.gbToppics.Controls.Add(this.rbGrobal);
             this.gbToppics.Controls.Add(this.rbSports);
             this.gbToppics.Controls.Add(this.rbMain);
-            this.gbToppics.Location = new System.Drawing.Point(22, 244);
+            this.gbToppics.Location = new System.Drawing.Point(12, 91);
             this.gbToppics.Name = "gbToppics";
-            this.gbToppics.Size = new System.Drawing.Size(111, 182);
+            this.gbToppics.Size = new System.Drawing.Size(97, 466);
             this.gbToppics.TabIndex = 5;
             this.gbToppics.TabStop = false;
             // 
             // rbEnter
             // 
             this.rbEnter.AutoSize = true;
-            this.rbEnter.Location = new System.Drawing.Point(23, 140);
+            this.rbEnter.Location = new System.Drawing.Point(10, 120);
             this.rbEnter.Name = "rbEnter";
             this.rbEnter.Size = new System.Drawing.Size(57, 16);
             this.rbEnter.TabIndex = 8;
             this.rbEnter.TabStop = true;
             this.rbEnter.Text = "エンタメ";
             this.rbEnter.UseVisualStyleBackColor = true;
+            this.rbEnter.CheckedChanged += new System.EventHandler(this.rbEnter_CheckedChanged);
             // 
             // rbGrobal
             // 
             this.rbGrobal.AutoSize = true;
-            this.rbGrobal.Location = new System.Drawing.Point(23, 69);
+            this.rbGrobal.Location = new System.Drawing.Point(10, 52);
             this.rbGrobal.Name = "rbGrobal";
             this.rbGrobal.Size = new System.Drawing.Size(47, 16);
             this.rbGrobal.TabIndex = 6;
@@ -119,34 +122,36 @@ namespace RssReader {
             this.rbGrobal.Text = "国際";
             this.rbGrobal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbGrobal.UseVisualStyleBackColor = true;
+            this.rbGrobal.CheckedChanged += new System.EventHandler(this.rbGrobal_CheckedChanged);
             // 
             // rbSports
             // 
             this.rbSports.AutoSize = true;
-            this.rbSports.Location = new System.Drawing.Point(23, 107);
+            this.rbSports.Location = new System.Drawing.Point(10, 85);
             this.rbSports.Name = "rbSports";
             this.rbSports.Size = new System.Drawing.Size(61, 16);
             this.rbSports.TabIndex = 5;
             this.rbSports.TabStop = true;
             this.rbSports.Text = "スポーツ";
             this.rbSports.UseVisualStyleBackColor = true;
+            this.rbSports.CheckedChanged += new System.EventHandler(this.rbSports_CheckedChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("BIZ UDPゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 220);
+            this.label1.Location = new System.Drawing.Point(14, 76);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 12);
+            this.label1.Size = new System.Drawing.Size(57, 12);
             this.label1.TabIndex = 7;
-            this.label1.Text = "トピックス:";
+            this.label1.Text = "トピックス";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 779);
+            this.ClientSize = new System.Drawing.Size(902, 608);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gbToppics);
             this.Controls.Add(this.wbBrowser);

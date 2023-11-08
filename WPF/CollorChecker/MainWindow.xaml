@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:CollorChecker"
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="700">
-    <Grid>
+    <Grid Background="GhostWhite">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="colorArea" Margin="10,17,10,10" Background="AliceBlue"/>
+        <Label x:Name="colorArea" Margin="10,17,10,10" Background="White"/>
 
 
         <Grid Grid.Column="1">
@@ -72,8 +72,8 @@
             </Grid.RowDefinitions>
 
             <Button x:Name="stockButton" Grid.Row="0" Content="STOCK" FontSize="20" 
-                    Margin="10,5" Click="stockButton_Click"/>
-            <ListBox x:Name="stockList" Grid.Row="1" Margin="10"/>
+                    Margin="10,5" Click="stockButton_Click" Background="LightPink"/>
+            <ListBox x:Name="stockList" Grid.Row="1" Margin="10" SelectionChanged="stockList_SelectionChanged"/>
             
         </Grid>
     </Grid>

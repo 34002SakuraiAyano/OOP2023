@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace RssReader {
     public class NewsTopic {
         [System.ComponentModel.DisplayName ( "トピックス" )]
-        public TopicGroup Topic { get; set; }
+
+        internal class TopicGroup {
+        }
     }
 
     //トピック一覧【列挙型】

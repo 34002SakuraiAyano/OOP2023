@@ -39,11 +39,11 @@ namespace RssReader {
 
                 foreach (var node in itemdDatas) {
                     lbRssTitle.Items.Add ( node.Title );
-
                 }
             }
         }
         // @"https://news.yahoo.co.jp/rss/topics/entertainment.xml", cityCode );
+
 
         //タイトル押したらウェブサイト行き
         private void lbRssTitle_SelectedIndexChanged_1(object sender, EventArgs e) {
@@ -54,21 +54,87 @@ namespace RssReader {
             wbBrowser.Navigate ( itemdDatas[item].Link );
             // wbBrowser.Navigate ( itemdDatas[lbRssTitle.SelectedIndex].Link );
         }
-        //private void setSelectedMaker(CarReport.TopicGroup topicGroup) {
-        //    switch (topicGroup) {
-        //        case CarReport.MakerGroup.トヨタ:
-        //            rbToyota.Checked = true;
-        //            break;
-        //        case CarReport.MakerGroup.日産:
-        //            rbNissan.Checked = true;
-        //            break;
-        //        case CarReport.MakerGroup.ホンダ:
-        //            rbHonda.Checked = true;
-        //            break;
-        //        case CarReport.MakerGroup.スバル:
-        //            rbSubaru.Checked = true;
-        //            break;
-        //    }
-        //}
+
+
+        //主要ボタン
+        private void rbMain_CheckedChanged(object sender, EventArgs e) {
+            lbRssTitle.Items.Clear ();
+
+            using (var wc = new WebClient ()) {
+                var url = wc.OpenRead ( @"https://news.yahoo.co.jp/rss/topics/top-picks.xml" );
+                XDocument xdoc = XDocument.Load ( url );
+                itemdDatas = xdoc.Root.Descendants ( "item" )
+                                .Select ( x => new ItemData {
+                                    Title = (string)x.Element ( "title" ),
+                                    Link = (string)x.Element ( "link" )
+                                } ).ToList ();
+
+                foreach (var node in itemdDatas) {
+                    lbRssTitle.Items.Add ( node.Title );
+                }
+            }
+        }
+
+        //国際ボタン
+        private void rbGrobal_CheckedChanged(object sender, EventArgs e) {
+            lbRssTitle.Items.Clear ();
+
+            using (var wc = new WebClient ()) {
+                var url = wc.OpenRead ( @"https://news.yahoo.co.jp/rss/topics/world.xml" );
+                XDocument xdoc = XDocument.Load ( url );
+                itemdDatas = xdoc.Root.Descendants ( "item" )
+                                .Select ( x => new ItemData {
+                                    Title = (string)x.Element ( "title" ),
+                                    Link = (string)x.Element ( "link" )
+                                } ).ToList ();
+
+                foreach (var node in itemdDatas) {
+                    lbRssTitle.Items.Add ( node.Title );
+                }
+            }
+        }
+        //スポーツ
+        private void rbSports_CheckedChanged(object sender, EventArgs e) {
+            lbRssTitle.Items.Clear ();
+
+            using (var wc = new WebClient ()) {
+                var url = wc.OpenRead ( @"https://news.yahoo.co.jp/rss/topics/sports.xml" );
+                XDocument xdoc = XDocument.Load ( url );
+                itemdDatas = xdoc.Root.Descendants ( "item" )
+                                .Select ( x => new ItemData {
+                                    Title = (string)x.Element ( "title" ),
+                                    Link = (string)x.Element ( "link" )
+                                } ).ToList ();
+
+                foreach (var node in itemdDatas) {
+                    lbRssTitle.Items.Add ( node.Title );
+                }
+            }
+        }
+
+        private void rbEnter_CheckedChanged(object sender, EventArgs e) {
+            lbRssTitle.Items.Clear ();
+
+            using (var wc = new WebClient ()) {
+                var url = wc.OpenRead ( @"https://news.yahoo.co.jp/rss/topics/entertainment.xml" );
+                XDocument xdoc = XDocument.Load ( url );
+                itemdDatas = xdoc.Root.Descendants ( "item" )
+                                .Select ( x => new ItemData {
+                                    Title = (string)x.Element ( "title" ),
+                                    Link = (string)x.Element ( "link" )
+                                } ).ToList ();
+
+                foreach (var node in itemdDatas) {
+                    lbRssTitle.Items.Add ( node.Title );
+                }
+            }
+        }
+
+
+
+        //指定したメーカーのラジオボタンをセット
+        private void setSelectedGroup(NewsTopic.TopicGroup topicGroup) {
+
+        }
     }
 }

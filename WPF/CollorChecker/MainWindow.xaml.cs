@@ -24,8 +24,11 @@ namespace CollorChecker {
         public MainWindow() {
             InitializeComponent ();
             DataContext = GetColorList ();
+
+
         }
 
+        
 
         //コンボボックス
         private MyColor[] GetColorList() {
@@ -35,26 +38,28 @@ namespace CollorChecker {
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             makeColor = (MyColor)((ComboBox)sender).SelectedItem;
-            //var color = makeColor.Color;
-            //var name = makeColor.Name;
 
             //色クリックで背景変わる
             if (makeColor != null) {
                 var brush = new System.Windows.Media.SolidColorBrush ( makeColor.Color );
                 colorArea.Background = brush;
+
+                //色クリックでスライダーの位置変える
+                rSlider.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.R;
+                gSlider.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.G;
+                bSlider.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.B;
             }
         }
 
-
-
         //ストックボタン
         private void stockButton_Click(object sender, RoutedEventArgs e) {
-            //stockList.Items.Add ( rValue.Text );
-            //stockList.Items.Add ( gValue.Text );
-            //stockList.Items.Add ( bValue.Text );
             stockList.Items.Insert( 0,makeColor);
-        }
 
+            rValue.Text = "0";
+            gValue.Text = "0";
+            bValue.Text = "0";
+
+        }
 
         //スライダーで色変換
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
@@ -65,6 +70,12 @@ namespace CollorChecker {
             var brush = new System.Windows.Media.SolidColorBrush ( makeColor.Color );
             colorArea.Background = brush;
         }
+
+        private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if (stockList.SelectedIndex == -1)
+                return;
+            }
+
     }
 
     //色と色名セット

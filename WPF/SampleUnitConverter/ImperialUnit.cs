@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SampleUnitConverter {
+    //ヤード単位
     public class ImperialUnit : DistanceUnit {
         private static List<ImperialUnit> units = new List<ImperialUnit> {
             new ImperialUnit{Name = "in" , Coefficient = 1, },

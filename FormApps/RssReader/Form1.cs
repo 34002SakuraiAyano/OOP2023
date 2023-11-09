@@ -47,6 +47,14 @@ namespace RssReader {
 
         //タイトル押したらウェブサイト行き
         private void lbRssTitle_SelectedIndexChanged_1(object sender, EventArgs e) {
+            LinkSelection ();
+        }
+
+        //お気に入りボックス
+        private void favoritetBox_SelectedIndexChanged(object sender, EventArgs e) {
+            LinkSelection ();
+        }
+        private void LinkSelection() {
             //インデックス番号を取得
             if (lbRssTitle.SelectedIndex == -1)
                 return;
@@ -54,6 +62,7 @@ namespace RssReader {
             wbBrowser.Navigate ( itemdDatas[item].Link );
             // wbBrowser.Navigate ( itemdDatas[lbRssTitle.SelectedIndex].Link );
         }
+
 
 
         //主要ボタン
@@ -112,6 +121,7 @@ namespace RssReader {
             }
         }
 
+        //エンタメ
         private void rbEnter_CheckedChanged(object sender, EventArgs e) {
             lbRssTitle.Items.Clear ();
 
@@ -134,6 +144,11 @@ namespace RssReader {
 
         //指定したメーカーのラジオボタンをセット
         private void setSelectedGroup(NewsTopic.TopicGroup topicGroup) {
+
+        }
+
+        //お気に入りボタン
+        private void button1_Click(object sender, EventArgs e) {
 
         }
     }

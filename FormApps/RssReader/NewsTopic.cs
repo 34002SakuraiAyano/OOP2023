@@ -11,12 +11,4 @@ namespace RssReader {
         internal class TopicGroup {
         }
     }
-
-    //トピック一覧【列挙型】
-    public enum TopicGroup {
-        主要,
-        国際,
-        エンタメ,
-        スポーツ,
-    }
 }

@@ -27,7 +27,10 @@ namespace RssReader {
             }
             lbRssTitle.Items.Clear ();
 
+            GetItems();
+        }
 
+        private void GetItems() {
             using (var wc = new WebClient ()) {
                 var url = wc.OpenRead ( tbUrl.Text );
                 XDocument xdoc = XDocument.Load ( url );
@@ -42,27 +45,18 @@ namespace RssReader {
                 }
             }
         }
+
         // @"https://news.yahoo.co.jp/rss/topics/entertainment.xml", cityCode );
 
 
         //タイトル押したらウェブサイト行き
         private void lbRssTitle_SelectedIndexChanged_1(object sender, EventArgs e) {
-            LinkSelection ();
-        }
-
-        //お気に入りボックス
-        private void favoritetBox_SelectedIndexChanged(object sender, EventArgs e) {
-            LinkSelection ();
-        }
-        private void LinkSelection() {
             //インデックス番号を取得
             if (lbRssTitle.SelectedIndex == -1)
                 return;
             var item = lbRssTitle.SelectedIndex;
             wbBrowser.Navigate ( itemdDatas[item].Link );
-            // wbBrowser.Navigate ( itemdDatas[lbRssTitle.SelectedIndex].Link );
         }
-
 
 
         //主要ボタン
@@ -141,15 +135,19 @@ namespace RssReader {
         }
 
 
-
-        //指定したメーカーのラジオボタンをセット
-        private void setSelectedGroup(NewsTopic.TopicGroup topicGroup) {
-
-        }
-
         //お気に入りボタン
         private void button1_Click(object sender, EventArgs e) {
+            var item = lbRssTitle.SelectedIndex;
+            favoritetListBox.Items.Add ( itemdDatas[item].Title );
+        }
 
+        //リストのタイトルクリックで画面表示
+        private void favoritetListBox_SelectedIndexChanged_1(object sender, EventArgs e) {
+
+            if (favoritetListBox.SelectedIndex == -1)
+                return;
+            var item = favoritetListBox.SelectedIndex;
+            wbBrowser.Navigate ( item );
         }
     }
 }

@@ -34,7 +34,7 @@ namespace RssReader {
             this.rbGrobal = new System.Windows.Forms.RadioButton();
             this.rbSports = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.favoritetBox = new System.Windows.Forms.ListBox();
+            this.favoritetListBox = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.gbToppics.SuspendLayout();
             this.SuspendLayout();
@@ -155,16 +155,16 @@ namespace RssReader {
             this.label1.TabIndex = 7;
             this.label1.Text = "トピックス ";
             // 
-            // favoritetBox
+            // favoritetListBox
             // 
-            this.favoritetBox.BackColor = System.Drawing.SystemColors.Info;
-            this.favoritetBox.FormattingEnabled = true;
-            this.favoritetBox.ItemHeight = 12;
-            this.favoritetBox.Location = new System.Drawing.Point(464, 70);
-            this.favoritetBox.Name = "favoritetBox";
-            this.favoritetBox.Size = new System.Drawing.Size(273, 184);
-            this.favoritetBox.TabIndex = 8;
-            this.favoritetBox.SelectedIndexChanged += new System.EventHandler(this.favoritetBox_SelectedIndexChanged);
+            this.favoritetListBox.BackColor = System.Drawing.SystemColors.Info;
+            this.favoritetListBox.FormattingEnabled = true;
+            this.favoritetListBox.ItemHeight = 12;
+            this.favoritetListBox.Location = new System.Drawing.Point(483, 82);
+            this.favoritetListBox.Name = "favoritetListBox";
+            this.favoritetListBox.Size = new System.Drawing.Size(254, 172);
+            this.favoritetListBox.TabIndex = 8;
+            this.favoritetListBox.SelectedIndexChanged += new System.EventHandler(this.favoritetListBox_SelectedIndexChanged_1);
             // 
             // button1
             // 
@@ -184,7 +184,7 @@ namespace RssReader {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 608);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.favoritetBox);
+            this.Controls.Add(this.favoritetListBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gbToppics);
             this.Controls.Add(this.wbBrowser);
@@ -212,7 +212,7 @@ namespace RssReader {
         private System.Windows.Forms.RadioButton rbGrobal;
         private System.Windows.Forms.RadioButton rbSports;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox favoritetBox;
+        private System.Windows.Forms.ListBox favoritetListBox;
         private System.Windows.Forms.Button button1;
     }
 }

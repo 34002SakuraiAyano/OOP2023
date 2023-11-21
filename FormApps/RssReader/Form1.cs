@@ -15,6 +15,7 @@ namespace RssReader {
     public partial class Form1 : Form {
         //取得データ保存用
         List<ItemData> itemdDatas = new List<ItemData> ();
+        List<ItemData> favoriteDatas = new List<ItemData> ();
 
         public Form1() {
             InitializeComponent ();
@@ -56,8 +57,8 @@ namespace RssReader {
                 return;
             var item = lbRssTitle.SelectedIndex;
             wbBrowser.Navigate ( itemdDatas[item].Link );
+            tbUrl.Text = itemdDatas[item].Link;
         }
-
 
         //主要ボタン
         private void rbMain_CheckedChanged(object sender, EventArgs e) {
@@ -137,17 +138,24 @@ namespace RssReader {
 
         //お気に入りボタン
         private void button1_Click(object sender, EventArgs e) {
-            var item = lbRssTitle.SelectedIndex;
-            favoritetListBox.Items.Add ( itemdDatas[item].Title );
+            //var item = lbRssTitle.SelectedIndex;
+            favoritetListBox.Items.Add ( itemdDatas[lbRssTitle.SelectedIndex].Title );
+            foreach (var item in itemdDatas) {
+                if (item.Title == (string)lbRssTitle.SelectedItem) {
+                    favoriteDatas.Add ( new ItemData {
+                        Title = item.Title,
+                        Link = item.Link
+                    } );
+                }
+            }
         }
 
         //リストのタイトルクリックで画面表示
         private void favoritetListBox_SelectedIndexChanged_1(object sender, EventArgs e) {
-
             if (favoritetListBox.SelectedIndex == -1)
                 return;
-            var item = favoritetListBox.SelectedIndex;
-            wbBrowser.Navigate ( item );
+                wbBrowser.Navigate ( favoriteDatas[favoritetListBox.SelectedIndex].Link);
+            tbUrl.Text = favoriteDatas[favoritetListBox.SelectedIndex].Link;
         }
     }
 }

@@ -12,7 +12,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="colorArea" Margin="10,17,10,10" Background="White"/>
+        <Label x:Name="colorArea" Margin="10,17,10,10" Background="Black"/>
 
 
         <Grid Grid.Column="1">
@@ -73,8 +73,7 @@
 
             <Button x:Name="stockButton" Grid.Row="0" Content="STOCK" FontSize="20" 
                     Margin="10,5" Click="stockButton_Click" Background="LightPink"/>
-            <ListBox x:Name="stockList" Grid.Row="1" Margin="10" SelectionChanged="stockList_SelectionChanged"/>
-            
+            <ListBox x:Name="stockList" Grid.Row="1" Margin="10" SelectionChanged="stockList_SelectionChanged" Background="LavenderBlush"/>
         </Grid>
     </Grid>
 </Window>

@@ -25,7 +25,6 @@ namespace RssReader {
         /// </summary>
         private void InitializeComponent() {
             this.tbUrl = new System.Windows.Forms.TextBox();
-            this.btGet = new System.Windows.Forms.Button();
             this.lbRssTitle = new System.Windows.Forms.ListBox();
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
             this.rbMain = new System.Windows.Forms.RadioButton();
@@ -36,27 +35,17 @@ namespace RssReader {
             this.label1 = new System.Windows.Forms.Label();
             this.favoritetListBox = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.gbToppics.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbUrl
             // 
             this.tbUrl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbUrl.Location = new System.Drawing.Point(22, 20);
+            this.tbUrl.Location = new System.Drawing.Point(88, 26);
             this.tbUrl.Name = "tbUrl";
-            this.tbUrl.Size = new System.Drawing.Size(632, 31);
+            this.tbUrl.Size = new System.Drawing.Size(649, 31);
             this.tbUrl.TabIndex = 0;
-            // 
-            // btGet
-            // 
-            this.btGet.BackColor = System.Drawing.Color.Pink;
-            this.btGet.Location = new System.Drawing.Point(680, 20);
-            this.btGet.Name = "btGet";
-            this.btGet.Size = new System.Drawing.Size(57, 31);
-            this.btGet.TabIndex = 1;
-            this.btGet.Text = "取得";
-            this.btGet.UseVisualStyleBackColor = false;
-            this.btGet.Click += new System.EventHandler(this.btGet_Click);
             // 
             // lbRssTitle
             // 
@@ -70,6 +59,9 @@ namespace RssReader {
             // 
             // wbBrowser
             // 
+            this.wbBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.wbBrowser.Location = new System.Drawing.Point(22, 260);
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
@@ -146,14 +138,14 @@ namespace RssReader {
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.label1.Font = new System.Drawing.Font("游ゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(9, 95);
+            this.label1.BackColor = System.Drawing.Color.SeaShell;
+            this.label1.Font = new System.Drawing.Font("HG丸ｺﾞｼｯｸM-PRO", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Location = new System.Drawing.Point(1, 98);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 17);
+            this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 7;
-            this.label1.Text = "トピックス ";
+            this.label1.Text = "トピックス : ";
             // 
             // favoritetListBox
             // 
@@ -169,7 +161,7 @@ namespace RssReader {
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button1.Font = new System.Drawing.Font("HG創英角ｺﾞｼｯｸUB", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button1.Font = new System.Drawing.Font("HG丸ｺﾞｼｯｸM-PRO", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button1.Location = new System.Drawing.Point(379, 196);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 58);
@@ -178,21 +170,34 @@ namespace RssReader {
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.SeaShell;
+            this.label2.Font = new System.Drawing.Font("HG丸ｺﾞｼｯｸM-PRO", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(8, 32);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 21);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "URL :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 608);
+            this.BackColor = System.Drawing.Color.SeaShell;
+            this.ClientSize = new System.Drawing.Size(760, 608);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.favoritetListBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gbToppics);
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbRssTitle);
-            this.Controls.Add(this.btGet);
             this.Controls.Add(this.tbUrl);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "RSSリーダー";
             this.gbToppics.ResumeLayout(false);
             this.gbToppics.PerformLayout();
             this.ResumeLayout(false);
@@ -203,7 +208,6 @@ namespace RssReader {
         #endregion
 
         private System.Windows.Forms.TextBox tbUrl;
-        private System.Windows.Forms.Button btGet;
         private System.Windows.Forms.ListBox lbRssTitle;
         private System.Windows.Forms.WebBrowser wbBrowser;
         private System.Windows.Forms.RadioButton rbMain;
@@ -214,6 +218,7 @@ namespace RssReader {
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox favoritetListBox;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

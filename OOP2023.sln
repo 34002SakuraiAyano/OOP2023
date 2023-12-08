@@ -205,6 +205,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUnitConverter", "WPF\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisibilityConverter", "WPF\VisibilityConverter\VisibilityConverter.csproj", "{0FAF9244-EB81-4917-8629-44E4C632A114}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dietcalendar", "Dietcalendar", "{4E8DD1E2-201F-40D9-93A3-C084D09B2745}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeightManaged", "Dietcalendar\WeightManaged\WeightManaged.csproj", "{4F5B06EF-9B35-4CF6-9276-1DDA4589B10F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -479,6 +483,10 @@ Global
 		{0FAF9244-EB81-4917-8629-44E4C632A114}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FAF9244-EB81-4917-8629-44E4C632A114}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FAF9244-EB81-4917-8629-44E4C632A114}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F5B06EF-9B35-4CF6-9276-1DDA4589B10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F5B06EF-9B35-4CF6-9276-1DDA4589B10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F5B06EF-9B35-4CF6-9276-1DDA4589B10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F5B06EF-9B35-4CF6-9276-1DDA4589B10F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -568,6 +576,7 @@ Global
 		{896A55F8-2578-470F-8051-C8FA9D781D55} = {73D90A7E-527A-40FA-AFAB-6D803BE6957F}
 		{4FEAB03F-95E0-489B-AB14-8787F94BF4A2} = {73D90A7E-527A-40FA-AFAB-6D803BE6957F}
 		{0FAF9244-EB81-4917-8629-44E4C632A114} = {73D90A7E-527A-40FA-AFAB-6D803BE6957F}
+		{4F5B06EF-9B35-4CF6-9276-1DDA4589B10F} = {4E8DD1E2-201F-40D9-93A3-C084D09B2745}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6A7DDD1B-62C2-4CA9-B6CC-42150DDD2519}

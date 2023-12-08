@@ -21,6 +21,7 @@ namespace RssReader {
             InitializeComponent ();
         }
 
+
         //取得ボタン
         private void btGet_Click(object sender, EventArgs e) {
             if (tbUrl.Text == "") {

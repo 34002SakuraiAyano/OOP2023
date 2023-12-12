@@ -3,7 +3,7 @@ using WeightManaged.ViewModels;
 
 namespace WeightManaged.ViewModels {
     public class MainViewModel : ViewModelBase {
-        private ViewModelBase activeView = new CalendarModel ();
+        private ViewModelBase activeView = new InputModel ();
 
         //画面に表示するUserControlのViewModelを設定するプロパティ
         public ViewModelBase ActiveView {

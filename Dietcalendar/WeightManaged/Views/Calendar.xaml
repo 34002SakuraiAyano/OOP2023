@@ -4,13 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WeightManaged.Views"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:viewmodels="clr-namespace:WeightManaged.ViewModels" 
+    d:DataContext="{d:DesignInstance Type=viewmodels:CalendarModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Label
-        HorizontalContentAlignment="Center"
-        VerticalContentAlignment="Center"
-        Content="カレンダーの画面です"
-        FontSize="32" />
+
+    <Calendar HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Height="176">
+        <Calendar.RenderTransform>
+            <ScaleTransform CenterX="90" CenterY="80" ScaleX="2" ScaleY="2" />
+        </Calendar.RenderTransform>
+    </Calendar>
+    
 </UserControl>

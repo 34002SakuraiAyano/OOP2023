@@ -30,14 +30,14 @@ namespace WeightManaged.ViewModels {
             //ActiveViewにセットするViewModelを切り替える
 
             switch (param) {
+                case "Input":
+                    ActiveView = new InputModel ();
+                    break;
                 case "Calendar":
                     ActiveView = new CalendarModel ();
                     break;
                 case "Graph":
                     ActiveView = new GraphModel ();
-                    break;
-                case "Input":
-                    ActiveView = new InputModel ();
                     break;
                 case "Recommend":
                     ActiveView = new RecommendModel ();

@@ -11,6 +11,6 @@
     <Label
         HorizontalContentAlignment="Center"
         VerticalContentAlignment="Center"
-        Content="設定の画面です"
+        Content="設定の画面"
         FontSize="32" />
 </UserControl>

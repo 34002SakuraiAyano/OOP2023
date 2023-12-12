@@ -11,6 +11,6 @@
     <Label
         HorizontalContentAlignment="Center"
         VerticalContentAlignment="Center"
-        Content="おすすめの画面です"
+        Content="おすすめのyoutube表示"
         FontSize="32" />
 </UserControl>

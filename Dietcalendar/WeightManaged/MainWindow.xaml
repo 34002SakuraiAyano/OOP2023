@@ -28,16 +28,16 @@
         <Button Content="グラフ"  Grid.Row="1" Grid.Column="2" Command="{Binding ScreenTransitionCommand}" CommandParameter="Graph"/>
         <Button Content="おすすめ" Grid.Row="1" Grid.Column="3" Command="{Binding ScreenTransitionCommand}" CommandParameter="Recommend"/>
         <Button Content="設定" Grid.Row="1" Grid.Column="4" Command="{Binding ScreenTransitionCommand}" CommandParameter="Setting"/>
-        <Grid Grid.Column="1">
+        <Grid Grid.ColumnSpan="5">
             <Grid.Resources>
+                <DataTemplate DataType="{x:Type vm:InputModel}">
+                    <view:Input/>
+                </DataTemplate>
                 <DataTemplate DataType="{x:Type vm:CalendarModel}">
                     <view:Calendar />
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type vm:GraphModel}">
                     <view:Graph/>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type vm:InputModel}">
-                    <view:Input/>
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type vm:RecommendModel}">
                     <view:Recommend/>

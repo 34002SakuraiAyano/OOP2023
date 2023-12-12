@@ -11,6 +11,6 @@
     <Label
         HorizontalContentAlignment="Center"
         VerticalContentAlignment="Center"
-        Content="入力の画面です"
+        Content="入力画面(体重とかBMI値)"
         FontSize="32" />
 </UserControl>

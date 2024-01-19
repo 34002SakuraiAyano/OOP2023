@@ -6,11 +6,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:view="clr-namespace:WeightManaged.Views"
     xmlns:vm="clr-namespace:WeightManaged.ViewModels"
-    Title="体重管理" Height="700" Width="550"
+    Title="体重管理" Height="722.5" Width="589"
     mc:Ignorable="d">
+
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
+
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>

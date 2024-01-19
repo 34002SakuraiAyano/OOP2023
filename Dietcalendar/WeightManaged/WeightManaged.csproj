@@ -56,6 +56,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\DelegateCommand.cs" />
+    <Compile Include="HeightInput.xaml.cs">
+      <DependentUpon>HeightInput.xaml</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="ViewModels\GraphModel.cs" />
     <Compile Include="ViewModels\InputModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -78,6 +82,10 @@
     <Compile Include="Views\Setting.xaml.cs">
       <DependentUpon>Setting.xaml</DependentUpon>
     </Compile>
+    <Page Include="HeightInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -136,6 +144,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="textboxbackground.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

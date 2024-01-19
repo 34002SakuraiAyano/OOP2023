@@ -21,6 +21,10 @@ namespace WeightManaged {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent ();
+
+            //開いた瞬間
+            HeightInput heightInput = new HeightInput ();
+            heightInput.ShowDialog ();
         }
     }
 }

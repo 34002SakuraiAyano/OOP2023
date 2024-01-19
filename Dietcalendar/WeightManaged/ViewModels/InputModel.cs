@@ -7,5 +7,6 @@ using System.Threading.Tasks;
 namespace WeightManaged.ViewModels {
     class InputModel : ViewModelBase {
         public InputModel() { }
+
     }
 }
